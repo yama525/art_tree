@@ -1,3 +1,5 @@
+<!-- サイトのトップページ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,6 @@
     <title>Document</title>
 </head>
 <body>
-    bbbbbbbb
+    
 </body>
 </html>
