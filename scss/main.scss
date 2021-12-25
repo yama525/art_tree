@@ -1,0 +1,24 @@
+// 全部の scss ファイルのメインとなるところ。HTML 上でリンクするのは基本このファイルのみ
+
+@charset 'utf-8';
+
+//ベース
+
+@import "./base/variables";
+@import "./base/mixin"; // 今のところ使用用途は未定ですが、慣れればかなり使えると思うので、一旦作成
+@import "./base/reset";
+
+
+// ================================
+
+// ヘッダー
+@import "./header";
+
+// フッター
+@import "./footer";
+
+//ボタン
+@import "./btn";
+
+// モーダルウィンドウ
+@import "./modal";
