@@ -10,18 +10,92 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+<!---------------------- ここから header ---------------------->
 <header>
+<!-- ロゴ -->
+<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+<!-- ロゴの下の文章 -->
+<p>M.A.D.S.</p>
+<hr style="border:0;border-top:1px solid black;">
+<p>the digital mixed reality art gallery 7.0</p>
+
+<!-- メニュータブ -->
+<ul>
+    <li>
+        <a href="">artwork.</a>
+    </li>
+    <li>
+        <a href="">artists.</a>
+    </li>
+    <li>
+        <a href="">events.</a>
+    </li>
+    <li>
+        <a href="">press.</a>
+    </li>
+    <li>
+        <a href="">about.</a>
+    </li>
+    <li>
+        <a href="">contact.</a>
+    </li>
+</ul>
 
 </header>
 
 
+<!---------------------- ここから main ---------------------->
 <main>
+<!-- アーティスト名（データベースから表示） -->
+<p>Artworks/アーティストの名前</p>
+
+<!-- 選択されたアートの画像 （データベースから表示）-->
+<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+
+<!-- アーティストの名前 （データベースから表示）-->
+<h2>アーティストの名前</h2>
+<!-- アーティストの自己紹介 （データベースから表示）-->
+<p>アーティストの自己紹介</p>
+
+<!-- 作品集 -->
+<h2>Artworks</h2>
+<ul>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+</ul>
+
 
 </main>
 
 
+
+<!---------------------- ここから footer ---------------------->
+
 <footer>
+<div>
+<p>Business Advisor</p>
+</div>
+
+<!-- Advisor 会社の画像とリンク -->
+<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+
+<!-- ページ最下部のやつ -->
+<p>© 2021 website by Simone Segalini</p>
 
 </footer>
 
