@@ -10,7 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-
 <!---------------------- ここから header ---------------------->
 <header>
 <!-- ロゴ -->
