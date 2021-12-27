@@ -17,7 +17,6 @@
   <input type="password" name="u_pass" placeholder="Password"/>
   <button>Login</button>
   <a href="register.php">新規登録</a>
-  <a href="register.php">新規登録</a>
   <a href="../home.php">home</a>
 </form>
   
