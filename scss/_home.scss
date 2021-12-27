@@ -1,0 +1,23 @@
+
+@charset 'utf-8';
+
+.about{
+    &__siteTitle1{
+        font-size: 24px;
+        color: $main-color;
+    }
+    &__siteTitle2{
+        font-size: 24px;
+    }
+
+// テスト1
+    // .about__siteTitle1{
+    //     font-size: 24px;
+    //     color: $main-color;
+    // }
+    // .about__siteTitle2{
+    //     font-size: 24px;
+    // }
+
+}
+
