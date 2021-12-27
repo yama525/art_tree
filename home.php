@@ -11,7 +11,11 @@
 </head>
 <body>
 
+<!-- ------------------------------------------------------ -->
 <!---------------------- ここから header ---------------------->
+<!-- ------------------------------------------------------ -->
+
+
 <header>
 <!-- ロゴ -->
 <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
@@ -45,67 +49,74 @@
 </header>
 
 
+<!-- ------------------------------------------------------ -->
 <!---------------------- ここから main ---------------------->
+<!-- ------------------------------------------------------ -->
+
 <main>
 <!-- サイトイメージ画像 -->
 <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
 
-<!-- artworks の見出し -->
-<h1>artworks.</h1>
 
-<!-- 見出しの下の説明文 -->
-<p>discover the best artworks by selected international artists.</p>
+<!-- ---------artworks の見出し--------- -->
+<div class="artworks">
+    <h1>artworks.</h1>
 
-<!-- artworks の写真一覧（とりあえず５枚） -->
-<ul>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-</ul>
+    <!-- 見出しの下の説明文 -->
+    <p>discover the best artworks by selected international artists.</p>
 
-<!-- スクロール時に背景が固定された画像 -->
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    <!-- artworks の写真一覧（とりあえず５枚） -->
+    <ul>
+        <li>
+            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        </li>
+        <li>
+            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        </li>
+        <li>
+            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        </li>
+        <li>
+            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        </li>
+        <li>
+            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        </li>
+    </ul>
 
+    <!-- スクロール時に背景が固定された画像 -->
+    <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
 
-
-
-<!-- about の見出し -->
-<h1>about.</h1>
-<h2>M.A.D.S.</h2>
-<h2>Art Mediator, Advisor, Dealer, Seeker. </h2>
-
-<p>
-M.A.D.S. ART GALLERY is a company operating internationally in the artistic field. It already boasts a contemporary physical venue located in one of the most lively areas of Milan, Italy totally set up with screens 50”, 55”, 60”, 85" vertical and horizontal size, to optimally accomodate all kinds of dimensions and to make the real dimensions of the work stand out, video projectors and touch screen monitors allowing the viewer to zoom and enhance every detail for a great result. It is also equipped with the VR OCULUS virtual reality viewer device to host photos and videos 3D.<br>
-<br>
-M.A.D.S. ART GALLERY is able to create and guarantee a continuous multimedia exhibition with the use of these new video system projection technologies allowing buyers, press, public, collectors and artists to enjoy the exhibitions in streaming all over the world, in every moment, through all its digital channels and achieving sales anywhere in the world, because operating on an international level with media and digital tools, there is no need for someone coming physically in location to close the deal.<br>
-<br>
-It is the first multimedia gallery with this permanent, digital, unique and innovative set-up and the first totally INCLUSIVE gallery: there is no work of art that it cannot exhibit. Whatever the material that composes it, its size, its support. It is a reference point for emerging and established artists, to launch or consolidate their career. A reference point for museums, galleries, institutions, associations, foundations, curators, critics, collectors as one of its primary objectives is to highlight the artist, his talent, his portfolio, making it accessible to an increasingly international audience.<br>
-<br>
-M.A.D.S. has therefore revolutionised the process of presentation of the artworks, increasing the visual quality of the details, their three-dimensionality and materiality through high definition and augmented reality, eliminating costs (as shipping, packaging, insurance, customs), time and bureaucracy, as well as protecting and safeguarding the integrity of the original artworks.<br>
-<br>
-An evolution for the art market, a new trend. Thousands of artists from all over the world find in M.A.D.S. the answer to their needs: exhibition, curatela, advertising, marketing and promotion, aimed to ensure a long-lasting visibility on a worldwide scale, thanks to the team of professionals that includes webmaster, graphic, photographers, video reporters, art curators, art director, commercial director, communications manager, mediators, advisors, dealers, seekers at their service.<br>
-<br>
-In July 2021, M.A.D.S. ART GALLERY opened a new headquarters: a new digital physical gallery based in Fuerteventura, Canary Islands, becoming larger and increasingly international.<br>
-</p>
-
-<!-- about の動画（一旦ダミー画像入れてます） -->
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+</div>
 
 
+<!-- ---------about の見出し--------- -->
+<div class="about">
+    <h1>about.</h1>
+    <p class="about__siteTitle1">M.A.D.S.</p>
+    <p class="about__siteTitle2">Art Mediator, Advisor, Dealer, Seeker. </p>
 
-<!-- contact. の見出し -->
+    <p class="about__text">
+    M.A.D.S. ART GALLERY is a company operating internationally in the artistic field. It already boasts a contemporary physical venue located in one of the most lively areas of Milan, Italy totally set up with screens 50”, 55”, 60”, 85" vertical and horizontal size, to optimally accomodate all kinds of dimensions and to make the real dimensions of the work stand out, video projectors and touch screen monitors allowing the viewer to zoom and enhance every detail for a great result. It is also equipped with the VR OCULUS virtual reality viewer device to host photos and videos 3D.<br>
+    <br>
+    M.A.D.S. ART GALLERY is able to create and guarantee a continuous multimedia exhibition with the use of these new video system projection technologies allowing buyers, press, public, collectors and artists to enjoy the exhibitions in streaming all over the world, in every moment, through all its digital channels and achieving sales anywhere in the world, because operating on an international level with media and digital tools, there is no need for someone coming physically in location to close the deal.<br>
+    <br>
+    It is the first multimedia gallery with this permanent, digital, unique and innovative set-up and the first totally INCLUSIVE gallery: there is no work of art that it cannot exhibit. Whatever the material that composes it, its size, its support. It is a reference point for emerging and established artists, to launch or consolidate their career. A reference point for museums, galleries, institutions, associations, foundations, curators, critics, collectors as one of its primary objectives is to highlight the artist, his talent, his portfolio, making it accessible to an increasingly international audience.<br>
+    <br>
+    M.A.D.S. has therefore revolutionised the process of presentation of the artworks, increasing the visual quality of the details, their three-dimensionality and materiality through high definition and augmented reality, eliminating costs (as shipping, packaging, insurance, customs), time and bureaucracy, as well as protecting and safeguarding the integrity of the original artworks.<br>
+    <br>
+    An evolution for the art market, a new trend. Thousands of artists from all over the world find in M.A.D.S. the answer to their needs: exhibition, curatela, advertising, marketing and promotion, aimed to ensure a long-lasting visibility on a worldwide scale, thanks to the team of professionals that includes webmaster, graphic, photographers, video reporters, art curators, art director, commercial director, communications manager, mediators, advisors, dealers, seekers at their service.<br>
+    <br>
+    In July 2021, M.A.D.S. ART GALLERY opened a new headquarters: a new digital physical gallery based in Fuerteventura, Canary Islands, becoming larger and increasingly international.<br>
+    </p>
+
+    <!-- about の動画（一旦ダミー画像入れてます） -->
+    <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+
+</div>
+
+
+<!-- ---------contact. の見出し--------- -->
 <h1>contact.</h1>
 <!-- 連絡先 -->
 <p>T. +39 339 52 40 867   |   mads@madsgallery.art</p>
@@ -137,6 +148,9 @@ Corso San Gottardo 18, 20136 Milan, Italy - Fuerteventura, Canary Islands, Spain
 
 </form>
 
+
+
+<!-- ---------会社情報など（全ページ共通--------- -->
 <!-- 区切り線 -->
 <hr style="border:0;border-top:1px solid black;">
 
@@ -151,7 +165,10 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
 
 
 
+
+<!-- ------------------------------------------------------ -->
 <!---------------------- ここから footer ---------------------->
+<!-- ------------------------------------------------------ -->
 
 <footer>
 <div>
