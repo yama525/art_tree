@@ -1,3 +1,15 @@
+body {
+  text-align: center;
+}
+
+body h1 {
+  font-size: 85px;
+}
+
+body p {
+  font-size: 18px;
+}
+
 /*! sanitize.css v3.2.0 | CC0 1.0 Public Domain | github.com/10up/sanitize.css */
 /*
  * Normalization
@@ -317,5 +329,19 @@ a:hover {
 
 a {
   text-decoration: none;
+}
+
+footer {
+  background-color: #A71286;
+  color: #fff;
+}
+
+.about__siteTitle1 {
+  font-size: 24px;
+  color: #A71286;
+}
+
+.about__siteTitle2 {
+  font-size: 24px;
 }
 /*# sourceMappingURL=main.css.map */
