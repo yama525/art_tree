@@ -12,8 +12,11 @@
   <div class="jumbotron">
    <fieldset>
     <legend>フリーアンケート</legend>
+<!-- <<<<<<< joooooji -->
+<!-- ======= -->
      <label>名前：<input type="text" name="name"></label><br>
      <label>Email：<input type="text" name="email"></label><br>
+<!-- >>>>>>> master -->
      <label>画像：<input type="file" name="upfile" ></label><br>
      <label><textArea name="naiyou" rows="4" cols="40"></textArea></label><br>
      <input type="submit" value="送信">
