@@ -51,7 +51,7 @@
     <form method="post" action="add_profile_act.php" enctype="multipart/form-data">
         <h2>プロフィール画像を追加</h2>
         <label for="file_upload" class="cms-thumb" >
-            <input type="file" id="file_upload" name="pname" accept="image/*" required>
+            <input type="file" id="file_upload" name="u_img" accept="image/*" required>
             <?= $view ?>
         </label>
 
@@ -59,9 +59,10 @@
         <h2>自己紹介</h2>
         <textarea name="" id="" cols="30" rows="10"></textarea>
         </div>
+
         <div>
         <a href="home.php">戻る</a>        <!-- 戻るボタン -->
-        <input id="add_pro_btn" type="submit" value="登録">   <!-- 登録ボタン -->
+        <input id="" type="submit" value="登録">   <!-- 登録ボタン -->
         </div>
     </form>
 
@@ -73,13 +74,13 @@
 
 <style>
     label > input {
-        display:none; /* アップロードボタンのスタイルを無効にする */
+        /* display:none; アップロードボタンのスタイルを無効にする */
     }
 
     img{
-        border-radius:5px;
+        /* border-radius:5px;
         cursor: pointer;
-        margin: 30px;
+        margin: 30px; */
     }
 
     .cms-thumb{
@@ -128,7 +129,6 @@
 </script>
 
 
-</body>
-</html>
+
 </body>
 </html>
