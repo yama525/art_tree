@@ -18,10 +18,12 @@
 <!-- ロゴ -->
 <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
 <!-- ロゴの下の文章 -->
+<div class="header_text">
 <p>M.A.D.S.</p>
 <hr style="border:0;border-top:1px solid black;">
-<p>the digital mixed reality art gallery 7.0</p>
 
+<p class="header_sub">the digital mixed reality art gallery 7.0</p>
+</div>
 <!-- メニュータブ -->
 <ul>
     <li>

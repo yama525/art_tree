@@ -1,2 +1,23 @@
 @charset 'utf-8';
 
+.header_text{
+    font-size: 18px;
+    color: $main-color;
+    .header_sub{
+        color: #333;
+
+    }
+}
+
+header{
+    ul{
+        font-size: 30px;
+        color: #000;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        display: flex;
+        justify-content: space-around;
+        margin-left: 15%;
+        margin-right: 15%;
+
+    }
+}
