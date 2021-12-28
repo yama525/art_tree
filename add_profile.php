@@ -48,17 +48,21 @@
 
 
 
-    <form method="post" action="create_profile_insert.php" enctype="multipart/form-data">
+    <form method="post" action="add_profile_act.php" enctype="multipart/form-data">
         <h2>プロフィール画像を追加</h2>
-            <label for="file_upload" class="cms-thumb" >
+        <label for="file_upload" class="cms-thumb" >
             <input type="file" id="file_upload" name="pname" accept="image/*" required>
             <?= $view ?>
-            </label>
+        </label>
+
         <div>
-        <h2></h2>
-        <a href="select.php">戻る</a>        <!-- 戻るボタン -->
+        <h2>自己紹介</h2>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+        <a href="home.php">戻る</a>        <!-- 戻るボタン -->
         <input id="add_pro_btn" type="submit" value="登録">   <!-- 登録ボタン -->
-      </div>
+        </div>
     </form>
 
     
@@ -73,11 +77,16 @@
     }
 
     img{
-        border-radius:50%;
+        border-radius:5px;
         cursor: pointer;
         margin: 30px;
     }
 
+    .cms-thumb{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+  }
 
 
 

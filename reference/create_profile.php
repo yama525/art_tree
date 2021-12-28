@@ -7,17 +7,17 @@ include("funcs.php");
 // exit();
 
 // ログインチェック
-loginCheck();
+// loginCheck();
 
 // DB 接続
 $pdo = db_conn();
 
 
-// pname がない場合はダミー画像、ある場合は pname を表示。
-if($_SESSION["pname"] == null){
+// u_img がない場合はダミー画像、ある場合は u_img を表示。
+if($_SESSION["u_img"] == null){
   $view = '<img class="profile_img" src="https://placehold.jp/24/e3e3e6/ffffff/200x200.png?text=%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%0A%E7%94%BB%E5%83%8F%E3%82%92%E8%BF%BD%E5%8A%A0" width="300px" height="300px">';
 }else{
-  $view = '<img class="profile_img" src="images/'.$_SESSION["pname"].'" width="300px" height="300px">';
+  $view = '<img class="profile_img" src="images/'.$_SESSION["u_img"].'" width="300px" height="300px">';
 }
 
 
@@ -61,7 +61,7 @@ if($_SESSION["pname"] == null){
       <h1>ようこそ <?= $_SESSION['u_name'] ?> さん</h1>     <!-- 登録したユーザーの名前を表示 -->
       <h2>プロフィール画像を追加しましょう！</h2>
         <label for="file_upload" class="cms-thumb" >
-          <input type="file" id="file_upload" name="pname" accept="image/*" required>
+          <input type="file" id="file_upload" name="u_img" accept="image/*" required>
           <?= $view ?>
         </label>
       <div>
