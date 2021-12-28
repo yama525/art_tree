@@ -55,8 +55,7 @@
 
 <main>
 <!-- サイトイメージ画像 -->
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-
+<img src="art_img/cafe.jpeg" alt="" style="width: 980px; height: 450px; object-fit: cover; object-position: 50% 100%;">
 
 <!-- ---------artworks の見出し--------- -->
 <div class="artworks">
