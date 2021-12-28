@@ -1,6 +1,6 @@
 <?php
-// session_start();
-// include("funcs.php");
+session_start();
+include("funcs.php");
 
 // 画像の入力チェック
 image_check("u_img");
