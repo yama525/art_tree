@@ -10,7 +10,7 @@
     function db_conn(){
         try {
         // localhost 
-            $db_name = "未定";    //データベース名
+            $db_name = "cream_puff";    //データベース名
             $db_id   = "root";      //アカウント名
             $db_pw   = "root";      //パスワード：XAMPPはパスワード無しに修正してください。
             $db_host = "localhost"; //DBホスト
