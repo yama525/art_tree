@@ -6,7 +6,7 @@ $u_pass = $_POST["u_pass"];
 
 //2. DB接続します
 try {
-  $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','root');
+  $pdo = new PDO('mysql:dbname=cream_puff;charset=utf8;host=localhost','root','root');
 } catch (PDOException $e) {
   exit('DBError!:'.$e->getMessage());
 }
