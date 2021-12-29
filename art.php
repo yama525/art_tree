@@ -1,4 +1,34 @@
-<!-- アートの一覧ページ -->
+<?php
+session_start();
+
+include("funcs.php");
+// sschk();
+try {
+    $pdo = new PDO('mysql:dbname=cream_puff;charset=utf8;host=localhost','root','root');
+  } catch (PDOException $e) {
+    exit('DBConnectError!:'.$e->getMessage());
+  }
+
+//２．データ登録SQL作成
+$stmt = $pdo->prepare("SELECT * FROM art_table WHERE user_id=:user_id");
+$stmt->bindValue(':user_id', $_SESSION["id"], PDO::PARAM_STR);
+$status = $stmt->execute();
+
+//３．データ表示
+$view="";
+if($status==false) {
+  sql_error($stmt);
+}else{
+  while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+    $view .= '<img src="art_img/'.$r["a_img"].'" width="200">';
+  }
+}
+
+
+// <img src="art_img/dammy.png" alt="">
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,6 +106,11 @@
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
     </li>
 </ul>
+
+<div>
+    <div class="container jumbotron" id="view"><?=$view?></div>
+
+</div>
 
 <!-- もっと見るボタン -->
 <button>Lead More</button>

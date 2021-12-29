@@ -75,16 +75,16 @@
 
 
 //fileUpload("送信名","アップロード先フォルダ");
-    function fileUpload($fname,$path){ // 「$fname」は form で送るときの input の name の値、「$path」はフォルダー名。※「$path」の部分の後は「/」つけること。
-        if (isset($_FILES[$fname] ) && $_FILES[$fname]["error"] ==0 ) {
+    function fileUpload($a_img,$art_img){ // 「$a_img」は form で送るときの input の name の値、「$path」はフォルダー名。※「$path」の部分の後は「/」つけること。
+        if (isset($_FILES[$a_img] ) && $_FILES[$a_img]["error"] ==0 ) {
         // ファイル情報取得
-            $file_name = $_FILES[$fname]["name"];        //ファイル名取得（1.jpg など）
-            $tmp_path  = $_FILES[$fname]["tmp_name"];        //一時保存場所取得
+            $file_name = $_FILES[$a_img]["name"];        //ファイル名取得（1.jpg など）
+            $tmp_path  = $_FILES[$a_img]["tmp_name"];        //一時保存場所取得
         // ユニークファイルの作成
             $extension = pathinfo($file_name, PATHINFO_EXTENSION);        // まずはファイルの拡張子をとる（jpg など）
             $file_name = date("YmdHis").md5(session_id()) . "." . $extension;        // md5 でただでさえユニークな日付をさらにハッシュ化
         // FileUpload [--Start--]
-            $file_dir_path = $path.$file_name;
+            $file_dir_path = $art_img.$file_name;
             if ( is_uploaded_file( $tmp_path ) ) {       // アップロードちゃんとできてるか確認。
                 if ( move_uploaded_file( $tmp_path, $file_dir_path ) ) {     // ファイルの移動
                     chmod( $file_dir_path, 0644 );
