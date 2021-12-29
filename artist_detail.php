@@ -64,7 +64,7 @@
 
 <!-- 作品集 -->
 <h2>Artworks</h2>
-<ul>
+<ul class="imglist">
     <li>
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
     </li>

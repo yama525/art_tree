@@ -65,23 +65,23 @@
     <p>discover the best artworks by selected international artists.</p>
 
     <!-- artworks の写真一覧（とりあえず５枚） -->
-    <ul>
-        <li>
-            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-        </li>
-        <li>
-            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-        </li>
-        <li>
-            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-        </li>
-        <li>
-            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-        </li>
-        <li>
-            <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-        </li>
-    </ul>
+    <ul class="imglist">
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+</ul>
 
     <!-- スクロール時に背景が固定された画像 -->
     <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
