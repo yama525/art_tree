@@ -27,16 +27,16 @@
 <!-- メニュータブ -->
 <ul>
     <li>
-        <a href="">artwork.</a>
+        <a href="art.php">artwork.</a>
     </li>
     <li>
-        <a href="">artists.</a>
+        <a href="artist.php">artists.</a>
     </li>
     <li>
-        <a href="">events.</a>
+        <a href="event.php">events.</a>
     </li>
     <li>
-        <a href="">press.</a>
+        <a href="press.php">press.</a>
     </li>
     <li>
         <a href="">about.</a>
