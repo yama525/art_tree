@@ -57,7 +57,7 @@
 
 
 <!-- プレス一覧画面 （とりあえず５枚）-->
-<ul>
+<ul class="imglist">
     <li>
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
     </li>
