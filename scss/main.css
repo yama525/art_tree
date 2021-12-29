@@ -371,6 +371,10 @@ img {
   padding: 10px;
 }
 
+.like_icon {
+  width: 25px;
+}
+
 .about__siteTitle1 {
   font-size: 24px;
   color: #A71286;
