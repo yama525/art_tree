@@ -25,6 +25,8 @@ if($status==false) {
 }
 
 
+
+
 // <img src="art_img/dammy.png" alt="">
 
 ?>
@@ -57,7 +59,7 @@ if($status==false) {
 <!-- メニュータブ -->
 <ul>
     <li>
-        <a href="art.php">artwork.</a>
+        <a href="art.php">artworks.</a>
     </li>
     <li>
         <a href="artist.php">artists.</a>
