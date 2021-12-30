@@ -200,10 +200,8 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
             $(".like").on("click", function () {  // on を押すとオフにする処理
             const params = new URLSearchParams();
                 //Ajax（非同期通信）post 
-                    // params.append('id', <?//= $id ?>); // id を上の方で取得してるから活用 OK
-                    params.append('id', 1); // テスト用
-                    params.append('user_id', 1); 
-                    params.append('art_id', 2); 
+                    params.append('user_id', <?= $user_id ?>); 
+                    params.append('art_id', <?= $art_id ?>); 
 
                     //axiosでAjax送信
                     axios.post('ajax_art_detail_like.php',params).then(function (response) {
@@ -222,10 +220,8 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
             const params = new URLSearchParams();
 
                 //Ajax（非同期通信）post ーーーーーーーー
-                    // params.append('id', <?//= $id ?>); // id を上の方で取得してるから活用
-                    params.append('id', 1); // テスト用
-                    params.append('user_id', 1); 
-                    params.append('art_id', 2); 
+                    params.append('user_id', <?= $user_id ?>); 
+                    params.append('art_id', <?= $art_id ?>); 
 
                     //axiosでAjax送信
                     axios.post('ajax_art_detail_like_cancel.php',params).then(function (response) {

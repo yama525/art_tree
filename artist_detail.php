@@ -1,5 +1,35 @@
 <!-- 各アーティストの詳細情報ページ -->
 
+
+<?php
+// session_start(); //session id とれたらここをオープン
+include("funcs.php");
+
+// DB 接続
+$pdo = db_conn();
+
+
+// ログインしている user の id（followee_id）と現在の画面のユーザー の user の id（followed_id）を一致させる
+// $followee_id = $_SESSION["followee_id"]; //session id とれたらここをオープン
+// $followed_id = $_SESSION["followed_id"]; //session id とれたらここをオープン
+$followee_id = 1; // テスト。本番は↑
+$followed_id = 2; // テスト。本番は↑
+
+// データ抽出
+$stmt_follow = $pdo->prepare('SELECT * FROM follow_table WHERE followee_id=:followee_id && followed_id=:followed_id ');
+$stmt_follow->bindValue(':followee_id', $followee_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+$stmt_follow->bindValue(':followed_id', $followed_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+$status_follow = $stmt_follow->execute();
+
+$result_follow = $stmt_follow->fetch(PDO::FETCH_ASSOC);
+
+// var_dump($result_follow); // OK
+// // echo empty($result_follow);
+// exit();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +86,17 @@
 
 <!-- 選択されたアートの画像 （データベースから表示）-->
 <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+
+
+<!-- フォローボタン -->
+    <div>
+        <!-- フォローボタン -->
+        <button class="follow follow_btn" >フォロー</button>
+        <!-- フォローキャンセルボタン（1回押すとアラートが表示されてフォロー解除の確認をとる） -->
+        <button class="follow_cancel follow_btn" style="display:none">フォロー中</button>
+    </div>
+
+
 
 <!-- アーティストの名前 （データベースから表示）-->
 <h2>アーティストの名前</h2>
@@ -115,6 +156,83 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
 <p>© 2021 website by Simone Segalini</p>
 
 </footer>
+
+
+
+
+<!-- ======================================================================================== -->
+<!-- =========================================script========================================= -->
+<!-- ======================================================================================== -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+// ===================================フォロー、フォロワー処理===================================
+    // フォロー > フォロー中の表示切り替え処理
+        $(".follow").on("click", function () {
+            $(".follow_cancel").show();
+            $(".follow").hide();
+        });
+
+
+    // フォロー情報のサーバー登録、削除処理-------------------
+        // フォローボタンを押した時のサーバーとの非同期通信 axios INSERT
+        $(".follow").on("click", function () {  
+            const params = new URLSearchParams();
+                //Ajax（非同期通信）post 
+                    params.append('followee_id', <?= $followee_id ?>); 
+                    params.append('followed_id', <?= $followed_id ?>); 
+
+                    //axiosでAjax送信
+                    axios.post('ajax_artist_detail_follow.php',params).then(function (response) {
+                        console.log(response.data);//通信OK
+                    }).catch(function (error) {
+                        console.log(error);//通信Error
+                    }).then(function () {
+                        console.log("Last");//通信OK/Error後に処理を必ずさせたい場合
+                    });
+
+            });
+
+
+        // フォロー中 > フォローの表示切り替え処理
+            $(".follow_cancel").on("click", function () {
+                if(!confirm("フォローを解除しますか？")){
+                    return false;
+                }else{
+                    $(".follow").show();
+                    $(".follow_cancel").hide();
+
+                // フォローキャンセルボタンを押した時のサーバーとの非同期通信 axios DELETE
+                    const params = new URLSearchParams();
+                        //Ajax（非同期通信）post ーーーーーーーー
+                            params.append('followee_id', <?= $followee_id ?>); 
+                            params.append('followed_id', <?= $followed_id ?>); 
+
+                            //axiosでAjax送信
+                            axios.post('ajax_artist_detail_follow_cancel.php',params).then(function (response) {
+                                console.log(response.data);//通信OK
+                            }).catch(function (error) {
+                                console.log(error);//通信Error
+                            }).then(function () {
+                                console.log("Last");//通信OK/Error後に処理を必ずさせたい場合
+                            });
+
+                }
+                
+            });
+            
+   // ページ更新時にフォロー中の表示を保持する-------------------
+   if(<?= 1* empty($result_follow) ?> != 1){ // 1* を入れないと empty($result_follow) 自体が空白になるのでエラーが起きる
+            $(".follow_cancel").show();
+            $(".follow").hide();
+        }
+      
+
+
+</script>
+
+
 
     
 </body>
