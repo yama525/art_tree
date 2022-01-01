@@ -1,3 +1,24 @@
+<!-- ユーザープロフィールページ -->
+
+<?php
+session_start();
+include("funcs.php");
+
+// DB 接続
+$pdo = db_conn();
+
+
+// u_img がない場合はダミー画像、ある場合は u_img を表示。
+if($_SESSION["u_img"] == null){
+  $view = '<img class="profile_img" src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ">';
+}else{
+  $view = '<img class="profile_img" src="images/'.$_SESSION["u_img"].'">';
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,21 +69,21 @@
 
 
 
-    <form method="post" action="add_profile_act.php" enctype="multipart/form-data">
-        <h2>プロフィール画像を追加</h2>
+    <form method="post" action="profile_act.php" enctype="multipart/form-data">
+        <h2 class="subtitle">Profile</h2>
         <label for="file_upload" class="cms-thumb" >
             <input type="file" id="file_upload" name="u_img" accept="image/*" required>
             <?= $view ?>
         </label>
 
         <div>
-        <h2>自己紹介</h2>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+          <h2 class="subtitle">Bio</h2>
+          <textarea class="profile_text" name="u_des" id="" cols="30" rows="10"></textarea>
         </div>
 
         <div>
-        <a href="home.php">戻る</a>        <!-- 戻るボタン -->
-        <input id="" type="submit" value="登録">   <!-- 登録ボタン -->
+          <a href="home.php">戻る</a>        <!-- 戻るボタン -->
+          <input class="register_btn btn" type="submit" value="登録">   <!-- 登録ボタン -->
         </div>
     </form>
 
@@ -74,14 +95,9 @@
 
 <style>
     label > input {
-        /* display:none; アップロードボタンのスタイルを無効にする */
+        display:none; アップロードボタンのスタイルを無効にする
     }
 
-    img{
-        /* border-radius:5px;
-        cursor: pointer;
-        margin: 30px; */
-    }
 
     .cms-thumb{
     margin: 0 auto;
@@ -120,7 +136,7 @@
 
 
 //  ーーーーーーー 画像が選択されていない時のアラート ーーーーーーー
-  $("#add_pro_btn").on("click", function () {
+  $(".register_btn").on("click", function () {
     if($("#file_upload").val() == ""){   // まずはクリックしたときに「$("#file_upload").val()」で val の値を取得。今回は空白だったので、 == "" とすることにより解消
       alert("ファイルが選択されていません");
     }  

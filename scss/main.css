@@ -1,9 +1,14 @@
+@charset "UTF-8";
 body {
   text-align: center;
 }
 
 body h1 {
   font-size: 85px;
+}
+
+body h2 {
+  font-size: 32px;
 }
 
 body p {
@@ -382,5 +387,30 @@ img {
 
 .about__siteTitle2 {
   font-size: 24px;
+}
+
+.subtitle {
+  padding-top: 40px;
+}
+
+.profile_img {
+  border-radius: 5px;
+  cursor: pointer;
+  width: 240px;
+  height: 240px;
+}
+
+/* textarea のスタイル */
+.profile_text {
+  width: 420px;
+  height: 160px;
+  border: 0.1px solid #dfdfdf;
+  border-radius: 1px;
+  /* 選択時 */
+}
+
+.profile_text:focus {
+  border: 3px solid #A71286;
+  outline: 0;
 }
 /*# sourceMappingURL=main.css.map */

@@ -21,10 +21,8 @@ $pdo = db_conn();
 // データ登録
 $sql = 'UPDATE user_table SET u_img=:u_img WHERE id=:id';
     $stmt = $pdo->prepare($sql);
-    
     $stmt->bindValue(':u_img', $_SESSION["u_img"], PDO::PARAM_STR);
     $stmt->bindValue(':id',    $_SESSION["id"],    PDO::PARAM_INT);
-
     $status = $stmt->execute();
 
 
@@ -33,7 +31,7 @@ if($status == false){
     $error = $stmt->errorInfo();
     exit("QueryError:".$error[2]);
 }else{
-    header("Location: home.php");
+    header("Location: profile.php");
     exit;
 }
 
