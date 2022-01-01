@@ -8,24 +8,44 @@ include("funcs.php");
 // DB 接続
 $pdo = db_conn();
 
+// いいね処理----------
+    // ログインしている user の id とlike_table の user_id を一致させる
+    // $user_id = $_SESSION["user_id"]; //session id とれたらここをオープン
+    // $art_id = $_SESSION["art_id"]; //session id とれたらここをオープン
+    $user_id = 1; // テスト。本番は↑
+    $art_id = 2; // テスト。本番は↑
 
-// ログインしている user の id とlike_table の user_id を一致させる
-// $user_id = $_SESSION["user_id"]; //session id とれたらここをオープン
-// $art_id = $_SESSION["art_id"]; //session id とれたらここをオープン
-$user_id = 1; // テスト。本番は↑
-$art_id = 2; // テスト。本番は↑
+    // データ抽出
+    $stmt_like = $pdo->prepare('SELECT * FROM like_table WHERE user_id=:user_id && art_id=:art_id ');
+    $stmt_like->bindValue(':user_id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+    $stmt_like->bindValue(':art_id', $art_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+    $status_like = $stmt_like->execute();
 
-// データ抽出
-$stmt_like = $pdo->prepare('SELECT * FROM like_table WHERE user_id=:user_id && art_id=:art_id ');
-$stmt_like->bindValue(':user_id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
-$stmt_like->bindValue(':art_id', $art_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
-$status_like = $stmt_like->execute();
+    $result_like = $stmt_like->fetch(PDO::FETCH_ASSOC);
+    // var_dump($result_like); // OK
+    // exit();
 
-$result_like = $stmt_like->fetch(PDO::FETCH_ASSOC);
-// var_dump($result_like); // OK
 
-// echo empty($result_like);
-// exit();
+// コメント処理----------
+    // 定義
+    $art_id = 2; // 仮
+
+    // データ抽出
+    $stmt_comment = $pdo->prepare('SELECT * FROM comment_table WHERE art_id=:art_id ORDER BY indate DESC');
+    $stmt_comment->bindValue(':art_id', $art_id, PDO::PARAM_INT); 
+    $status_comment = $stmt_comment->execute();
+    // $result_comment = $stmt_comment->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($result_comment); // OK
+    // exit();
+
+    $view_comment = "";
+    while($result_comment = $stmt_comment->fetch(PDO::FETCH_ASSOC)){
+        $view_comment .= '<div>';
+        $view_comment .= '<p>'.$result_comment["comment"].'</p>';
+        $view_comment .= '</div>';
+    }
+ 
+
 
 ?>
 
@@ -56,7 +76,7 @@ $result_like = $stmt_like->fetch(PDO::FETCH_ASSOC);
 
 <!-- メニュータブ -->
 <ul>
-<   li>
+    <li>
         <a href="art.php">artwork.</a>
     </li>
     <li>
@@ -88,22 +108,31 @@ $result_like = $stmt_like->fetch(PDO::FETCH_ASSOC);
 
 <div>
     <!-- 選択されたアートの画像 （データベースから表示）-->
-    <div>
-    <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </div>
+        <div>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        </div>
 
     <!-- いいねボタン -->
-    <div>
-        <!-- いいねボタン -->
-        <img class="like like_icon" src="other_img/heart_white.png" alt="">
-        <!-- いいねキャンセルボタン（いいねは2回押すと取り消されるから） -->
-        <img class="like_cancel like_icon" src="other_img/heart_red.png" style="display:none">
-    </div>
+        <div>
+            <!-- いいねボタン -->
+            <img class="like like_icon" src="other_img/heart_white.png" alt="">
+            <!-- いいねキャンセルボタン（いいねは2回押すと取り消されるから） -->
+            <img class="like_cancel like_icon" src="other_img/heart_red.png" style="display:none">
+        </div>
 
-    <!-- コメント -->
-    <div>
-    <textarea name="" id="" cols="30" rows="10" placeholder="コメントを入力"></textarea>
-    </div>
+    <!-- コメント入力欄 -->
+        <form method="post" action="art_detail_comment.php">
+            <div>
+                <textarea name="comment" id="" cols="30" rows="10" placeholder="コメントを入力"></textarea>
+            </div>
+    <!-- コメント投稿ボタン -->
+            <div>
+                <input type="submit" class="post_comment" value="投稿">
+            </div>
+        </form>
+
+    <!-- コメント表示箇所 -->
+        <?= $view_comment ?>
 
 </div>
 
