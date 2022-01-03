@@ -1,13 +1,6 @@
 @charset 'utf-8';
 
-.header_text{
-    font-size: 18px;
-    color: $main-color;
-    .header_sub{
-        color: #333;
 
-    }
-}
 
 header{
     ul{
@@ -18,6 +11,28 @@ header{
         justify-content: space-around;
         margin-left: 15%;
         margin-right: 15%;
-
     }
+
+    .header_space{
+        height: 50px;
+        text-align: right;
+
+
+        &__img{
+            width: 65px;
+            height: 65px;
+            border-radius: 50px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+    }
+    
+    .header_text{
+        font-size: 18px;
+        color: $main-color;
+    
+    }
+    
+
 }
+
