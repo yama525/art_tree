@@ -48,6 +48,7 @@ $val = $stmt->fetch();
 if($val["id"] != ""){
   $_SESSION["chk_ssid"] = session_id();
   $_SESSION["id"] = $val['id'];
+  $_SESSION["u_img"] = $val["u_img"]; // 
   // ログイン処理OKならselect.phpへ
   header("Location: ../home.php");
 }else{

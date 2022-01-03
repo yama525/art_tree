@@ -336,15 +336,6 @@ a {
   text-decoration: none;
 }
 
-.header_text {
-  font-size: 18px;
-  color: #A71286;
-}
-
-.header_text .header_sub {
-  color: #333;
-}
-
 header ul {
   font-size: 30px;
   color: #000;
@@ -356,6 +347,24 @@ header ul {
       justify-content: space-around;
   margin-left: 15%;
   margin-right: 15%;
+}
+
+header .header_space {
+  height: 50px;
+  text-align: right;
+}
+
+header .header_space__img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+header .header_text {
+  font-size: 18px;
+  color: #A71286;
 }
 
 footer {
@@ -419,7 +428,7 @@ img {
 }
 
 .profile_img {
-  border-radius: 5px;
+  border-radius: 2px;
   cursor: pointer;
   width: 240px;
   height: 240px;
@@ -430,12 +439,12 @@ img {
   width: 420px;
   height: 160px;
   border: 0.1px solid #dfdfdf;
-  border-radius: 1px;
+  border-radius: 2px;
   /* 選択時 */
 }
 
 .profile_text:focus {
-  border: 3px solid #A71286;
+  border: 1.5px solid #A71286;
   outline: 0;
 }
 /*# sourceMappingURL=main.css.map */

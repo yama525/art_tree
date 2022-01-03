@@ -7,6 +7,12 @@ include("funcs.php");
 // DB 接続
 $pdo = db_conn();
 
+// 右上アイコンで u_img がない場合はダミー画像、ある場合は u_img を表示。
+if($_SESSION["u_img"] == null){
+  $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="https://placehold.jp/24/e3e3e6/ffffff/200x200.png?text=%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%0A%E7%94%BB%E5%83%8F%E3%82%92%E8%BF%BD%E5%8A%A0" alt="プロフィール画像"></a>';
+}else{
+  $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="artist_img/'.$_SESSION["u_img"].'" alt="プロフィール画像"></a>';
+}
 
 // u_img がない場合はダミー画像、ある場合は u_img を表示。
 if($_SESSION["u_img"] == null){
@@ -31,7 +37,15 @@ if($_SESSION["u_img"] == null){
 </head>
 <body>
 
+<!-- ------------------------------------------------------ -->
+<!---------------------- ここから header ---------------------->
+<!-- ------------------------------------------------------ -->
 <header>
+<!-- ページ右上のプロフィール写真アイコン -->
+<div class="header_space">
+    <?= $view_profile_icon ?>
+</div>
+
 <!-- ロゴ -->
 <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
 <!-- ロゴの下の文章 -->
@@ -64,10 +78,11 @@ if($_SESSION["u_img"] == null){
 </header>
 
 
+
+<!-- ------------------------------------------------------ -->
+<!---------------------- ここから main ---------------------->
+<!-- ------------------------------------------------------ -->
 <main>
-
-
-
 
     <form method="post" action="profile_act.php" enctype="multipart/form-data">
         <h2 class="subtitle">Profile</h2>
