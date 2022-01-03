@@ -1,1 +1,26 @@
 @charset 'utf-8';
+
+.btn{
+    font-size: 20px;
+    padding: 10px 25px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin: 20px 8px;
+    color: white;
+}
+
+
+.btn_positive{
+    background-color: $main_color;
+    &:hover{
+        background-color:$main-color-hover ;
+    }
+}
+.btn_negative{
+    background-color: rgb(185, 185, 185);
+    &:hover{
+        background-color: rgb(87, 87, 87);
+    }
+}
+
+$main-color-hover: #ac649c;

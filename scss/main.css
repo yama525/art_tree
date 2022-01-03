@@ -363,6 +363,31 @@ footer {
   color: #fff;
 }
 
+.btn {
+  font-size: 20px;
+  padding: 10px 25px;
+  cursor: pointer;
+  border-radius: 2px;
+  margin: 20px 8px;
+  color: white;
+}
+
+.btn_positive {
+  background-color: #A71286;
+}
+
+.btn_positive:hover {
+  background-color: #ac649c;
+}
+
+.btn_negative {
+  background-color: #b9b9b9;
+}
+
+.btn_negative:hover {
+  background-color: #575757;
+}
+
 .imglist {
   display: -webkit-box;
   display: -ms-flexbox;

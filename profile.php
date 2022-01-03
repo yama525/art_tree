@@ -82,8 +82,8 @@ if($_SESSION["u_img"] == null){
         </div>
 
         <div>
-          <a href="home.php">戻る</a>        <!-- 戻るボタン -->
-          <input class="register_btn btn" type="submit" value="登録">   <!-- 登録ボタン -->
+          <a href="home.php" class="btn_negative btn">Back</a>        <!-- 戻るボタン -->
+          <input class="btn_positive btn" type="submit" value="Update">   <!-- 登録ボタン -->
         </div>
     </form>
 
@@ -92,6 +92,12 @@ if($_SESSION["u_img"] == null){
 
 </main>
 
+<footer>
+
+<!-- ページ最下部のやつ -->
+<p>© 2022 Art tree</p>
+
+</footer>
 
 <style>
     label > input {
@@ -136,7 +142,7 @@ if($_SESSION["u_img"] == null){
 
 
 //  ーーーーーーー 画像が選択されていない時のアラート ーーーーーーー
-  $(".register_btn").on("click", function () {
+  $(".btn__positive").on("click", function () {
     if($("#file_upload").val() == ""){   // まずはクリックしたときに「$("#file_upload").val()」で val の値を取得。今回は空白だったので、 == "" とすることにより解消
       alert("ファイルが選択されていません");
     }  

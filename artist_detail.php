@@ -144,16 +144,9 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
 <!-- ------------------------------------------------------ -->
 
 <footer>
-<div>
-<p>Business Advisor</p>
-</div>
-
-<!-- Advisor 会社の画像とリンク -->
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
 
 <!-- ページ最下部のやつ -->
-<p>© 2021 website by Simone Segalini</p>
+<p>© 2022 Art tree</p>
 
 </footer>
 
