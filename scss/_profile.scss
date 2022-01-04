@@ -11,18 +11,39 @@
     height:240px;
 }
 
+/* textarea のスタイル */
+.profile_input{
+    border: 0.1px solid #dfdfdf;
+    border-radius:2px;
+    font-weight: bold;
+/* 選択時 */
+    &:focus { 
+    border: 2px solid $main_color;
+    outline: 0;
+    }
+}
 
 /* textarea のスタイル */
-.profile_text{
+.profile_textarea{
         width: 420px;
         height: 160px;
         border: 0.1px solid #dfdfdf;
         border-radius:2px;
     /* 選択時 */
         &:focus { 
-        border: 1.5px solid $main_color;
+        border: 2px solid $main_color;
         outline: 0;
         }
 }
 
-
+.profile{
+    &__name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 40px;
+            cursor: pointer;
+        }
+    }
+}

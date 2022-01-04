@@ -358,7 +358,16 @@ header .header_space__img {
   width: 65px;
   height: 65px;
   border-radius: 50px;
-  margin-right: 20px;
+  position: relative;
+  top: 2px;
+  left: -12px;
+  cursor: pointer;
+}
+
+header .header_space__text {
+  position: relative;
+  top: 6px;
+  left: -18px;
   cursor: pointer;
 }
 
@@ -435,7 +444,20 @@ img {
 }
 
 /* textarea のスタイル */
-.profile_text {
+.profile_input {
+  border: 0.1px solid #dfdfdf;
+  border-radius: 2px;
+  font-weight: bold;
+  /* 選択時 */
+}
+
+.profile_input:focus {
+  border: 2px solid #A71286;
+  outline: 0;
+}
+
+/* textarea のスタイル */
+.profile_textarea {
   width: 420px;
   height: 160px;
   border: 0.1px solid #dfdfdf;
@@ -443,8 +465,25 @@ img {
   /* 選択時 */
 }
 
-.profile_text:focus {
-  border: 1.5px solid #A71286;
+.profile_textarea:focus {
+  border: 2px solid #A71286;
   outline: 0;
+}
+
+.profile__name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile__name img {
+  width: 40px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

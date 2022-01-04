@@ -23,7 +23,7 @@ if($_SESSION["u_img"] == null){
 $followee_id = 1; // テスト。本番は↑
 $followed_id = 2; // テスト。本番は↑
 
-// データ抽出
+// follow_table からのデータ抽出
 $stmt_follow = $pdo->prepare('SELECT * FROM follow_table WHERE followee_id=:followee_id && followed_id=:followed_id ');
 $stmt_follow->bindValue(':followee_id', $followee_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
 $stmt_follow->bindValue(':followed_id', $followed_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
@@ -34,6 +34,17 @@ $result_follow = $stmt_follow->fetch(PDO::FETCH_ASSOC);
 // var_dump($result_follow); // OK
 // // echo empty($result_follow);
 // exit();
+
+
+$user_id = 1; //（仮）本番はクリックしたユーザーの id を取得する
+// user_table からのデータ抽出
+$stmt_user = $pdo->prepare('SELECT * FROM user_table WHERE id=:id');
+$stmt_user->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+$status_user = $stmt_user->execute();
+
+$result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
+
+
 
 ?>
 
@@ -95,7 +106,7 @@ $result_follow = $stmt_follow->fetch(PDO::FETCH_ASSOC);
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- アーティスト名（データベースから表示） -->
-<p>Artworks/アーティストの名前</p>
+<p>Artworks/<?= $result_user["u_name"] ?></p>
 
 <!-- 選択されたアートの画像 （データベースから表示）-->
 <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
@@ -110,11 +121,10 @@ $result_follow = $stmt_follow->fetch(PDO::FETCH_ASSOC);
     </div>
 
 
-
 <!-- アーティストの名前 （データベースから表示）-->
-<h2>アーティストの名前</h2>
+<h2><?= $result_user["u_name"] ?></h2>
 <!-- アーティストの自己紹介 （データベースから表示）-->
-<p>アーティストの自己紹介</p>
+<p><?= $result_user["u_des"] ?></p>
 
 <!-- 作品集 -->
 <h2>Artworks</h2>
