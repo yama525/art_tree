@@ -17,10 +17,10 @@ if($_SESSION["u_img"] == null){
   }
 
 
+
 // ログインしている user の id（followee_id）と現在の画面のユーザー の user の id（followed_id）を一致させる
-// $followee_id = $_SESSION["followee_id"]; //session id とれたらここをオープン
-// $followed_id = $_SESSION["followed_id"]; //session id とれたらここをオープン
-$followee_id = 1; // テスト。本番は↑
+$followee_id = $_SESSION["id"]; //session id とれたらここをオープン
+// $followed_id = $_GET["user_id"]; // 選択しているアーティストのid
 $followed_id = 2; // テスト。本番は↑
 
 // follow_table からのデータ抽出
