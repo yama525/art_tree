@@ -18,8 +18,21 @@ if($_SESSION["u_img"] == null){
 if($_SESSION["u_img"] == null){
   $view = '<img class="profile_img" src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ">';
 }else{
-  $view = '<img class="profile_img" src="images/'.$_SESSION["u_img"].'">';
+  $view = '<img class="profile_img" src="artist_img/'.$_SESSION["u_img"].'">';
 }
+
+
+
+// $user_id = $_SESSION["id"]; // 本番はこちら
+$user_id = 1; //（仮）
+// user_table からのデータ抽出
+$stmt_user = $pdo->prepare('SELECT * FROM user_table WHERE id=:id');
+$stmt_user->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+$status_user = $stmt_user->execute();
+
+$result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
+
+
 
 ?>
 
@@ -43,6 +56,8 @@ if($_SESSION["u_img"] == null){
 <header>
 <!-- ページ右上のプロフィール写真アイコン -->
 <div class="header_space">
+
+    <a href="login/logout_act.php" class="header_space__text">Log out</a>
     <?= $view_profile_icon ?>
 </div>
 
@@ -83,25 +98,67 @@ if($_SESSION["u_img"] == null){
 <!---------------------- ここから main ---------------------->
 <!-- ------------------------------------------------------ -->
 <main>
+<br>
+<br>
 
+<!-- プロフィール -->
+<div class="profile">
+  <div>
+    <?= $view ?>
+  </div>
+  <div class="profile__name">
+    <p style="font-weight:bold"><?= $result_user["u_name"] ?></p>
+    <img class="edit_start_btn" src="other_img/pen.png" alt="">
+  </div>
+  <br>
+  <div>
+    <p><?= $result_user["u_des"] ?></p>
+  </div>
+</div>
+
+<!-- プロフィール編集中のみ表示 -->
+<div class="profile_edit" style="display:none">
     <form method="post" action="profile_act.php" enctype="multipart/form-data">
-        <h2 class="subtitle">Profile</h2>
         <label for="file_upload" class="cms-thumb" >
             <input type="file" id="file_upload" name="u_img" accept="image/*" required>
             <?= $view ?>
         </label>
-
         <div>
-          <h2 class="subtitle">Bio</h2>
-          <textarea class="profile_text" name="u_des" id="" cols="30" rows="10"></textarea>
+          <input class="profile_input" type="text" name="u_name" value="<?= $result_user["u_name"] ?>">
+        </div>
+
+        <br>
+        <div>
+          <textarea class="profile_textarea" name="u_des" cols="30" rows="10"><?= $result_user["u_des"] ?></textarea>
         </div>
 
         <div>
-          <a href="home.php" class="btn_negative btn">Back</a>        <!-- 戻るボタン -->
+          <a class="btn_negative btn">Cancel</a>        <!-- 戻るボタン -->
           <input class="btn_positive btn" type="submit" value="Update">   <!-- 登録ボタン -->
         </div>
     </form>
+  </div>
 
+
+<!-- 自分の作品集 -->
+<h2 class="subtitle">Artworks</h2>
+<ul class="imglist">
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+    <li>
+        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    </li>
+</ul>
     
   
 
@@ -134,6 +191,20 @@ if($_SESSION["u_img"] == null){
 <script src="http://code.jquery.com/jquery-3.0.0.js"></script>
 <script>
 
+
+// いいねボタンの色変え-------------------
+    // edit_start_btn ボタンを押したら編集画面に切り替え
+    $(".edit_start_btn").on("click", function(){
+            $(".profile").hide();
+            $(".profile_edit").show();
+        });
+
+    // btn_negative ボタンを押したら表示モードに戻す
+        $(".btn_negative").on("click", function(){
+            $(".profile_edit").hide();
+            $(".profile").show();
+        });
+
 // ーーーーーーーーーーーー 画像サムネイル表示 ーーーーーーーーーーーー
   // アップロードするファイルを選択
   $('input[type=file]').change(function() {
@@ -156,12 +227,12 @@ if($_SESSION["u_img"] == null){
 
 
 
-//  ーーーーーーー 画像が選択されていない時のアラート ーーーーーーー
-  $(".btn__positive").on("click", function () {
-    if($("#file_upload").val() == ""){   // まずはクリックしたときに「$("#file_upload").val()」で val の値を取得。今回は空白だったので、 == "" とすることにより解消
-      alert("ファイルが選択されていません");
-    }  
-  });
+// //  ーーーーーーー 画像が選択されていない時のアラート ーーーーーーー
+//   $(".btn__positive").on("click", function () {
+//     if($("#file_upload").val() == ""){   // まずはクリックしたときに「$("#file_upload").val()」で val の値を取得。今回は空白だったので、 == "" とすることにより解消
+//       alert("ファイルが選択されていません");
+//     }  
+//   });
 
 </script>
 
