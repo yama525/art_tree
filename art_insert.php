@@ -5,7 +5,7 @@ session_start();
 $a_title   = $_POST["a_title"];
 $a_des = $_POST["a_des"];
 $a_year  = $_POST["a_year"];
-$user_id = 1;
+$user_id = $_SESSION["id"];
 
 
 

@@ -126,7 +126,9 @@ if($status==false) {
 </div>
 
 <!-- もっと見るボタン -->
-<button>Lead More</button>
+<button>Lead More</button><br>
+
+<a href="art_register.php">アート登録</a>
 
 
 
