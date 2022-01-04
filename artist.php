@@ -15,6 +15,20 @@ if($_SESSION["u_img"] == null){
     $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="artist_img/'.$_SESSION["u_img"].'" alt="プロフィール画像"></a>';
   }
 
+//２．データ登録SQL作成
+$stmt = $pdo->prepare("SELECT * FROM user_table");
+$status = $stmt->execute();
+
+//３．データ表示
+$view="";
+if($status==false) {
+  sql_error($stmt);
+}else{
+  while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+    $view .= '<img src="artist_img/'.$r["u_img"].'" width="200">';
+  }
+}
+
 
 ?>
 
@@ -98,6 +112,11 @@ if($_SESSION["u_img"] == null){
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
     </li>
 </ul>
+
+<div>
+    <div class="container jumbotron" id="view"><?=$view?></div>
+
+</div>
 
 <!-- もっと見るボタン -->
 <button>Lead More</button>
