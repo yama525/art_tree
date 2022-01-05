@@ -12,8 +12,6 @@ $artist_id = $_GET['artist_id'];
 // var_dump($artist_id);
 // echo('</pre>');
 
-// exit();
-
 // DB 接続
 $pdo = db_conn();
 
@@ -59,13 +57,21 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 
 
 // アーティストに紐づくアート作品の表示：art_table からのデータ抽出
-$stmt_art = $pdo->prepare('SELECT * FROM user_table inner join art_table on user_table.id=art_table.user_id');
-// $stmt_art->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+$stmt_art = $pdo->prepare('SELECT * FROM user_table inner join art_table on (user_table.id=art_table.user_id) AND (user_id=:id)');
+$stmt_art->bindValue(':id', $artist_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
 $status_art = $stmt_art->execute();
 
-$result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
 
-// var_dump($result_art["a_img"]);
+
+$arts="";
+// $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
+  while( $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){ 
+    $arts .= '<li><img src="art_img/'.$result_art["a_img"].'" width="200"></li>';
+  }
+
+// var_dump($result_art["a_title"]);
+// var_dump($arts);
+
 // exit();
 
 ?>
@@ -151,7 +157,7 @@ $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
 <!-- 作品集 -->
 <h2>Artworks</h2>
 <ul class="imglist">
-    <li>
+    <!-- <li>
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
     </li>
     <li>
@@ -164,9 +170,9 @@ $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
     </li>
     <li>
-        <!-- <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt=""> -->
         <img src="art_img/<?=$result_art["a_img"]?>" width="300" height="300">
-    </li>
+    </li> -->
+    <?=$arts?>
 </ul>
 
 
