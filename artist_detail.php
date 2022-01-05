@@ -24,10 +24,11 @@ if($_SESSION["u_img"] == null){
   }
 
 
+
 // ログインしている user の id（followee_id）と現在の画面のユーザー の user の id（followed_id）を一致させる
-// $followee_id = $_SESSION["followee_id"]; //session id とれたらここをオープン
-// $followed_id = $_SESSION["followed_id"]; //session id とれたらここをオープン
-$followee_id = $_SESSION["id"]; // テスト。本番は↑
+
+$followee_id = $_SESSION["id"]; //ログインしているユーザーのid
+// $followed_id = $_GET["user_id"]; // 選択しているアーティストのid
 $followed_id = 2; // テスト。本番は↑
 
 // follow_table からのデータ抽出
@@ -43,8 +44,9 @@ $result_follow = $stmt_follow->fetch(PDO::FETCH_ASSOC);
 // exit();
 
 
-$user_id = $artist_id; //クリックしたユーザーの id を取得する
+
 // user_table からのデータ抽出
+$user_id = $artist_id; //クリックしたユーザーの id を取得する
 $stmt_user = $pdo->prepare('SELECT * FROM user_table WHERE id=:id');
 $stmt_user->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
 $status_user = $stmt_user->execute();
@@ -68,11 +70,6 @@ $arts="";
   while( $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){ 
     $arts .= '<li><img src="art_img/'.$result_art["a_img"].'" width="200"></li>';
   }
-
-// var_dump($result_art["a_title"]);
-// var_dump($arts);
-
-// exit();
 
 ?>
 
@@ -138,6 +135,7 @@ $arts="";
 
 <!-- 選択されたアーティストの画像 （データベースから表示）-->
 <img src="artist_img/<?=$result_user["u_img"] ?>" width="600" height="600">
+
 
 
 <!-- フォローボタン -->
