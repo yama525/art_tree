@@ -36,8 +36,8 @@ $result_follow = $stmt_follow->fetch(PDO::FETCH_ASSOC);
 // exit();
 
 
-$user_id = 1; //（仮）本番はクリックしたユーザーの id を取得する
 // user_table からのデータ抽出
+$user_id = 1; //（仮）本番はクリックしたユーザーの id を取得する
 $stmt_user = $pdo->prepare('SELECT * FROM user_table WHERE id=:id');
 $stmt_user->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
 $status_user = $stmt_user->execute();

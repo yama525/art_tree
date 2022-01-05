@@ -8,10 +8,24 @@ body{
 
     h2{
         font-size: 32px;
+        font-family: 'PT Serif', serif;
     }
 
     p{
         font-size: 18px;
+        font-family: 'PT Serif', serif;
+    }
+
+    a{
+        cursor: pointer;
+    }
+
+    img{
+        object-fit: cover;
+    }
+
+    .japanese{
+        font-family: 'Noto Sans JP', sans-serif;
     }
 }
 

@@ -1,8 +1,12 @@
 .imglist{
     display: flex;
     justify-content: center;
+    
+    img{
+        padding: 10px;
+        width: 330px;
+        height: 330px;
+        object-fit: cover;
+    }
 }
 
-img{
-    padding: 10px;
-}
