@@ -25,7 +25,7 @@ if($status==false) {
   sql_error($stmt);
 }else{
   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
-    $view .= '<form method="get" action="artist_detail.php"><a href="artist_detail.php"><img src="artist_img/'.$r["u_img"].'" width="200" height="200" value="id"></a></form>';
+    $view .= '<form method="get" action="artist_detail.php"><a href="artist_detail.php?artist_id='.$r["id"].'"><img src="artist_img/'.$r["u_img"].'" width="200" height="200"></a></form>';
   }
 }
 
