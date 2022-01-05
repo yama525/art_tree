@@ -29,7 +29,7 @@ if($_SESSION["u_img"] == null){
 
 $followee_id = $_SESSION["id"]; //ログインしているユーザーのid
 // $followed_id = $_GET["user_id"]; // 選択しているアーティストのid
-$followed_id = 2; // テスト。本番は↑
+$followed_id = $artist_id; // テスト。本番は↑
 
 // follow_table からのデータ抽出
 $stmt_follow = $pdo->prepare('SELECT * FROM follow_table WHERE followee_id=:followee_id && followed_id=:followed_id ');
