@@ -45,7 +45,7 @@ $result_follow = $stmt_follow->fetch(PDO::FETCH_ASSOC);
 // exit();
 
 
-$user_id = $artist_id; //（仮）本番はクリックしたユーザーの id を取得する
+$user_id = $artist_id; //クリックしたユーザーの id を取得する
 // user_table からのデータ抽出
 $stmt_user = $pdo->prepare('SELECT * FROM user_table WHERE id=:id');
 $stmt_user->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
@@ -54,6 +54,18 @@ $status_user = $stmt_user->execute();
 $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 
 // var_dump($result_user["u_img"]);
+// exit();
+
+
+
+// アーティストに紐づくアート作品の表示：art_table からのデータ抽出
+$stmt_art = $pdo->prepare('SELECT * FROM user_table inner join art_table on user_table.id=art_table.user_id');
+// $stmt_art->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+$status_art = $stmt_art->execute();
+
+$result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
+
+// var_dump($result_art["a_img"]);
 // exit();
 
 ?>
@@ -118,8 +130,8 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 <!-- アーティスト名（データベースから表示） -->
 <p>Artworks/<?= $result_user["u_name"] ?></p>
 
-<!-- 選択されたアートの画像 （データベースから表示）-->
-<img src="artist_img/<?=$result_user["u_img"] ?>" >
+<!-- 選択されたアーティストの画像 （データベースから表示）-->
+<img src="artist_img/<?=$result_user["u_img"] ?>" width="600" height="600">
 
 
 <!-- フォローボタン -->
@@ -152,7 +164,8 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
     </li>
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <!-- <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt=""> -->
+        <img src="art_img/<?=$result_art["a_img"]?>" width="300" height="300">
     </li>
 </ul>
 
