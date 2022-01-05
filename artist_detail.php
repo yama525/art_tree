@@ -19,7 +19,7 @@ if($_SESSION["u_img"] == null){
 
 
 // ログインしている user の id（followee_id）と現在の画面のユーザー の user の id（followed_id）を一致させる
-$followee_id = $_SESSION["id"]; //session id とれたらここをオープン
+$followee_id = $_SESSION["id"]; //ログインしているユーザーのid
 // $followed_id = $_GET["user_id"]; // 選択しているアーティストのid
 $followed_id = 2; // テスト。本番は↑
 
@@ -43,7 +43,6 @@ $stmt_user->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッ
 $status_user = $stmt_user->execute();
 
 $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
-
 
 
 ?>
@@ -108,8 +107,8 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 <!-- アーティスト名（データベースから表示） -->
 <p>Artworks/<?= $result_user["u_name"] ?></p>
 
-<!-- 選択されたアートの画像 （データベースから表示）-->
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+<!-- 選択されたアーティストの画像 （データベースから表示）-->
+<img src="<?= $result_user["u_img"]?>">
 
 
 <!-- フォローボタン -->
