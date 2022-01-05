@@ -25,10 +25,9 @@ if($status==false) {
   sql_error($stmt);
 }else{
   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
-    $view .= '<img src="artist_img/'.$r["u_img"].'" width="200">';
+    $view .= '<li><a href="artist_detail.php?artist_id='.$r["id"].'"><img src="artist_img/'.$r["u_img"].'" width="200" height="200"></a></li>';
   }
 }
-
 
 ?>
 
@@ -43,6 +42,8 @@ if($status==false) {
     <title>Document</title>
 </head>
 <body>
+
+
 
 <!-- ------------------------------------------------------ -->
 <!---------------------- ここから header ---------------------->
@@ -96,27 +97,10 @@ if($status==false) {
 
 <!-- アーティスト一覧画面 （とりあえず５枚）-->
 <ul class="imglist">
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
+        <!-- <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt=""> -->
+        <?=$view?>
+
 </ul>
-
-<div>
-    <div class="container jumbotron" id="view"><?=$view?></div>
-
-</div>
 
 <!-- もっと見るボタン -->
 <button>Lead More</button>
