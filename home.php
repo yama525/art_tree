@@ -42,12 +42,15 @@ if($_SESSION["u_img"] == null){
 <div class="header_space">
     <?= $view_profile_icon ?>
 </div>
+
 <!-- ロゴ -->
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+<img class="logo" src="other_img/logo.png" alt="">
 <!-- ロゴの下の文章 -->
-<p>M.A.D.S.</p>
-<hr style="border:0;border-top:1px solid black;">
-<p>the digital mixed reality art gallery 7.0</p>
+  <div class="logo_text">
+    <p>ART TREE</p>
+      <hr> <!-- 横線 -->
+    <p>the digital mixed reality and NFT art gallery</p>
+  </div>
 
 <!-- メニュータブ -->
 <ul>
@@ -64,10 +67,10 @@ if($_SESSION["u_img"] == null){
         <a href="press.php">press.</a>
     </li>
     <li>
-        <a href="">about.</a>
+        <a href="#about">about.</a>
     </li>
     <li>
-        <a href="">contact.</a>
+        <a href="#contact">contact.</a>
     </li>
 </ul>
 
@@ -115,7 +118,7 @@ if($_SESSION["u_img"] == null){
 
 
 <!-- ---------about の見出し--------- -->
-<div class="about">
+<div id="about">
     <h1>about.</h1>
     <p class="about__siteTitle1">M.A.D.S.</p>
     <p class="about__siteTitle2">Art Mediator, Advisor, Dealer, Seeker. </p>
@@ -141,37 +144,39 @@ if($_SESSION["u_img"] == null){
 
 
 <!-- ---------contact. の見出し--------- -->
-<h1>contact.</h1>
-<!-- 連絡先 -->
-<p>T. +39 339 52 40 867   |   mads@madsgallery.art</p>
-<!-- 説明文と住所 -->
-<p>
-Guests are received by appointment only, please write us by mail or use the form below specifying the reasons for the request<br>
-<br>
-Events Locations<br>
-Corso San Gottardo 18, 20136 Milan, Italy - Fuerteventura, Canary Islands, Spain
-<br>
-<br>
-</p>
+<div id="contact">
+    <h1>contact.</h1>
+    <!-- 連絡先 -->
+    <p>T. +39 339 52 40 867   |   mads@madsgallery.art</p>
+    <!-- 説明文と住所 -->
+    <p>
+    Guests are received by appointment only, please write us by mail or use the form below specifying the reasons for the request<br>
+    <br>
+    Events Locations<br>
+    Corso San Gottardo 18, 20136 Milan, Italy - Fuerteventura, Canary Islands, Spain
+    <br>
+    <br>
+    </p>
 
-<!-- お問合せフォーム -->
-<form method="post" action="">
-    <div>
-        <input type="text" name="" placeholder="Name*" value="">
-    </div>
-    <div>
-        <input type="text" name="" placeholder="Email*" value="">
-    </div>
-    <div>
-        <input type="text" name="" placeholder="Subject*" value="">
-    </div>
-    <textarea name="" id="" placeholder="Message*" cols="30" rows="10"></textarea>
-    <div>
-        <input type="submit" value="Send">
-    </div>
+    <!-- お問合せフォーム -->
+    <form method="post" action="">
+        <div>
+            <input type="text" name="" placeholder="Name*" value="">
+        </div>
+        <div>
+            <input type="text" name="" placeholder="Email*" value="">
+        </div>
+        <div>
+            <input type="text" name="" placeholder="Subject*" value="">
+        </div>
+        <textarea name="" id="" placeholder="Message*" cols="30" rows="10"></textarea>
+        <div>
+            <input type="submit" value="Send">
+        </div>
 
-</form>
+    </form>
 
+</div>
 
 
 <!-- ---------会社情報など（全ページ共通--------- -->
