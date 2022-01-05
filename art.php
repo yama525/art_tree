@@ -15,20 +15,35 @@ if($_SESSION["u_img"] == null){
 
 
 
-//２．データ登録SQL作成
-$stmt = $pdo->prepare("SELECT * FROM art_table WHERE user_id=:user_id");
-$stmt->bindValue(':user_id', $_SESSION["id"], PDO::PARAM_STR);
-$status = $stmt->execute();
+// //２．データ登録SQL作成
+// $stmt = $pdo->prepare("SELECT * FROM art_table WHERE user_id=:user_id");
+// $stmt->bindValue(':user_id', $_SESSION["id"], PDO::PARAM_STR);
+// $status = $stmt->execute();
 
-//３．データ表示
-$view="";
-if($status==false) {
-  sql_error($stmt);
-}else{
-  while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
-    $view .= '<img src="art_img/'.$r["a_img"].'" width="200">';
-  }
-}
+// //３．データ表示
+// $view="";
+// if($status==false) {
+//   sql_error($stmt);
+// }else{
+//   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+//     $view .= '<img src="art_img/'.$r["a_img"].'" width="200">';
+//   }
+// }
+
+// 自分のidを取得、そこから自分のフォローしているユーザーのidを取得
+$stmt = $pdo->prepare("SELECT * FROM follow_table WHERE followee_id=:followee_id");
+$stmt->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
+$status = $stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$followed_id = $result["followed_id"];
+ 
+// フォローしているユーザーのidとそのユーザーの保有している写真を接続
+$stmt2 = $pdo->prepare(" SELECT * FROM art_table AS A_T
+INNER JOIN follow_table AS F_T ON F_T.followed_id = A_T.user_id
+WHERE F_T.followee_id = :followee_id && F_T.followed_id = :followed_id");
+$stmt2->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
+$stmt2->bindValue(':followed_id', $followed_id, PDO::PARAM_STR);
+$status2 = $stmt2->execute();
 
 
 
