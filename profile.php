@@ -33,6 +33,23 @@ $status_user = $stmt_user->execute();
 $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 
 
+// art_table からのデータ抽出
+$view_user_art = "";
+$stmt_art = $pdo->prepare('SELECT * FROM art_table WHERE user_id=:user_id');
+$stmt_art->bindValue(':user_id', $_SESSION["id"], PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
+$status_art = $stmt_art->execute();
+
+
+
+while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
+  
+    $view_user_art .= '<li>';
+    $view_user_art .= '<a href="art_detail.php?id='.$result_art["id"].'"><img src="art_img/'.$result_art["a_img"].'"></a>';
+    $view_user_art .= '</li>';
+
+}
+
+
 
 ?>
 
@@ -45,7 +62,11 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -62,11 +83,13 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 </div>
 
 <!-- ロゴ -->
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+  <img class="logo" src="other_img/logo.png" alt="">
 <!-- ロゴの下の文章 -->
-<p>M.A.D.S.</p>
-<hr style="border:0;border-top:1px solid black;">
-<p>the digital mixed reality art gallery 7.0</p>
+  <div class="logo_text">
+    <p>ART TREE</p>
+      <hr> <!-- 横線 -->
+    <p>the digital mixed reality and NFT art gallery</p>
+  </div>
 
 <!-- メニュータブ -->
 <ul>
@@ -107,12 +130,12 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
     <?= $view ?>
   </div>
   <div class="profile__name">
-    <p style="font-weight:bold"><?= $result_user["u_name"] ?></p>
+    <p class="japanese"><?= $result_user["u_name"] ?></p>
     <img class="edit_start_btn" src="other_img/pen.png" alt="">
   </div>
   <br>
-  <div>
-    <p><?= $result_user["u_des"] ?></p>
+  <div class="user_des">
+    <p class="japanese"><?= $result_user["u_des"] ?></p>
   </div>
 </div>
 
@@ -129,7 +152,7 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 
         <br>
         <div>
-          <textarea class="profile_textarea" name="u_des" cols="30" rows="10"><?= $result_user["u_des"] ?></textarea>
+          <textarea class="profile_textarea japanese" name="u_des" cols="30" rows="10"><?= $result_user["u_des"] ?></textarea>
         </div>
 
         <div>
@@ -143,21 +166,7 @@ $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 <!-- 自分の作品集 -->
 <h2 class="subtitle">Artworks</h2>
 <ul class="imglist">
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
+    <?= $view_user_art ?>
 </ul>
     
   

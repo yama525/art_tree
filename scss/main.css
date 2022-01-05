@@ -9,10 +9,25 @@ body h1 {
 
 body h2 {
   font-size: 32px;
+  font-family: 'PT Serif', serif;
 }
 
 body p {
   font-size: 18px;
+  font-family: 'PT Serif', serif;
+}
+
+body a {
+  cursor: pointer;
+}
+
+body img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+body .japanese {
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 /*! sanitize.css v3.2.0 | CC0 1.0 Public Domain | github.com/10up/sanitize.css */
@@ -337,7 +352,7 @@ a {
 }
 
 header ul {
-  font-size: 30px;
+  font-size: 36px;
   color: #000;
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: -webkit-box;
@@ -345,8 +360,27 @@ header ul {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 12%;
+  margin-right: 12%;
+}
+
+header p {
+  font-size: 24px;
+}
+
+header hr {
+  border-top: 1px solid black;
+  width: 450px;
+  margin: 0 auto;
+}
+
+header .logo {
+  width: 290px;
+}
+
+header .logo_text {
+  margin-top: 34px;
+  margin-bottom: 58px;
 }
 
 header .header_space {
@@ -355,13 +389,15 @@ header .header_space {
 }
 
 header .header_space__img {
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
   border-radius: 50px;
   position: relative;
   top: 2px;
   left: -12px;
   cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 header .header_space__text {
@@ -379,6 +415,11 @@ header .header_text {
 footer {
   background-color: #A71286;
   color: #fff;
+  height: 20px;
+}
+
+footer p {
+  font-size: 12px;
 }
 
 .btn {
@@ -415,8 +456,12 @@ footer {
           justify-content: center;
 }
 
-img {
+.imglist img {
   padding: 10px;
+  width: 330px;
+  height: 330px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .like_icon {
@@ -482,8 +527,20 @@ img {
           align-items: center;
 }
 
+.profile__name p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
 .profile__name img {
-  width: 40px;
+  width: 20px;
   cursor: pointer;
+  margin-left: 5px;
+}
+
+.user_des {
+  width: 500px;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=main.css.map */
