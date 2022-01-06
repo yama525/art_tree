@@ -97,11 +97,13 @@ $arts="";
 </div>
 
 <!-- ロゴ -->
-<img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+<img class="logo" src="other_img/logo.png" alt="">
 <!-- ロゴの下の文章 -->
-<p>M.A.D.S.</p>
-<hr style="border:0;border-top:1px solid black;">
-<p>the digital mixed reality art gallery 7.0</p>
+  <div class="logo_text">
+    <p>ART TREE</p>
+      <hr> <!-- 横線 -->
+    <p>the digital mixed reality and NFT art gallery</p>
+  </div>
 
 <!-- メニュータブ -->
 <ul>
@@ -118,10 +120,10 @@ $arts="";
         <a href="press.php">press.</a>
     </li>
     <li>
-        <a href="">about.</a>
+        <a href="home.php#about">about.</a>
     </li>
     <li>
-        <a href="">contact.</a>
+        <a href="home.php#contact">contact.</a>
     </li>
 </ul>
 

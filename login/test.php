@@ -1,5 +1,3 @@
-<!-- ユーザーログインのページ -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
-    <title>Document</title>
+    <title>新規登録</title>
 </head>
 
 <body>
@@ -17,11 +15,15 @@
 <div class="logo">
     <img class="logo_img" src="../other_img/logo.png" alt="">
 </div>
-    <form method="POST" action="login_act.php">
+    <form method="POST" action="register_act.php">
 
         <div class="form-item">
             <p class="formLabel">Username</p>
             <input type="text" name="u_name" id="email" class="form-style" autocomplete="off"/>
+        </div>
+        <div class="form-item">
+            <p class="formLabel">Email</p>
+            <input type="email" name="email" id="email" class="form-style" autocomplete="off"/>
         </div>
         <div class="form-item">
             <p class="formLabel">Password</p>
@@ -30,8 +32,8 @@
             <p><a href="#" ><small>Forgot Password ?</small></a></p>  
         </div>
         <div class="form-item">
-            <p class="pull-left"><a href="register.php"><small>Register</small></a></p>
-            <input type="submit" class="login pull-right" value="Log In">
+            <p class="pull-left"><a href="login.php"><small>Log In</small></a></p>
+            <input type="submit" class="login pull-right" value="Register">
             <div class="clear-fix"></div>
         </div>
     </form>
@@ -138,7 +140,7 @@ input[type="submit"].login:focus{outline: none;}
 
 <script>
     $(document).ready(function(){
-  var formInputs = $('input[type="text"],input[type="password"]');
+  var formInputs = $('input[type="text"],input[type="email"],input[type="password"]');
   formInputs.focus(function() {
        $(this).parent().children('p.formLabel').addClass('formTop');
        $('div#formWrapper').addClass('darken-bg');
