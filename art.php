@@ -28,8 +28,8 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 }
 
 // inner join で follow_table と user_table を接続
-$stmt_join_follow_art = $pdo->prepare(" SELECT * FROM art_table AS A_T
-INNER JOIN follow_table AS F_T ON F_T.followed_id = A_T.user_id
+$stmt_join_follow_art = $pdo->prepare(" SELECT * FROM follow_table AS F_T
+INNER JOIN art_table AS A_T ON F_T.followed_id = A_T.user_id
 WHERE F_T.followee_id = :followee_id");
 $stmt_join_follow_art->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
 $status_join_follow_art = $stmt_join_follow_art->execute();
@@ -39,10 +39,12 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 //   var_dump($result_join_follow_art);
 //   exit();
   $view_join_follow_art .= '<li><a href="art_detail.php
-  ?a_img='.$result_join_follow_art["a_img"].'
+  ?a_id='.$result_join_follow_art["id"].'
+  &a_img='.$result_join_follow_art["a_img"].'
   &a_title='.$result_join_follow_art["a_title"].'
   &a_des='.$result_join_follow_art["a_des"].'
   &a_year='.$result_join_follow_art["a_year"].'
+
   "><img src="art_img/'.$result_join_follow_art["a_img"].'"></a></li>';
 }
 

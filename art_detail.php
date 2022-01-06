@@ -9,8 +9,9 @@ $a_img=$_GET["a_img"];
 $a_title=$_GET["a_title"];
 $a_des=$_GET["a_des"];
 $a_year=$_GET["a_year"];
+$art_id=$_GET["a_id"];
 
-// var_dump($_SESSION["art_id"]);
+// var_dump($a_img);
 // exit();
 
 // DB 接続
@@ -28,9 +29,11 @@ if($_SESSION["u_img"] == null){
 // いいね処理----------
     // ログインしている user の id とlike_table の user_id を一致させる
     $user_id = $_SESSION["id"]; //session id とれたらここをオープン
-    $art_id = $_SESSION["art_id"]; //session id とれたらここをオープン
+    // $art_id = $art_id; //session id とれたらここをオープン
     // $user_id = 1; // テスト。本番は↑
     // $art_id = 2; // テスト。本番は↑
+    // var_dump($art_id);
+    // exit();
 
     // データ抽出
     $stmt_like = $pdo->prepare('SELECT * FROM like_table WHERE user_id=:user_id && art_id=:art_id ');
@@ -285,20 +288,6 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
             $(".like").hide();
         }
       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 
