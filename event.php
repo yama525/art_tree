@@ -86,20 +86,18 @@ if($_SESSION["u_img"] == null){
 <!-- イベント一覧画面 （とりあえず５枚）-->
 <ul class="imglist">
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <a href="https://www.tokyoartbeat.com/en/events/-/2021%2FF397"><img src="other_img\event1.jpg" alt=""></a>
     </li>
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <a href="https://www.tokyoartbeat.com/en/events/-/2021%2FCC32"><img src="other_img\event2.jfif" alt=""></a>
     </li>
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <a href="https://www.tokyoartbeat.com/en/events/-/2021%2Ffinnish-design-for-everyday-life-patterns-and-forms-inspired-by-nature"><img src="other_img\event3.jpg" alt=""></a>
     </li>
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <a href="https://www.tokyoartbeat.com/en/events/-/2021%2Fmiquel-barcelo"><img src="other_img\event4.jpg" alt=""></a>
     </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
+
 </ul>
 
 <!-- もっと見るボタン -->

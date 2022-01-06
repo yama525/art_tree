@@ -86,19 +86,16 @@ if($_SESSION["u_img"] == null){
 <!-- プレス一覧画面 （とりあえず５枚）-->
 <ul class="imglist">
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <a href="https://www.tokyoartbeat.com/en/articles/-/a-japanese-textile-town-celebrates-its-heritage"><img src="other_img\press1.jpg" alt=""></a>
     </li>
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <a href="https://www.tokyoartbeat.com/en/articles/-/exhibitions-open-over-the-new-year-holidays-2021-2022"><img src="other_img\press2.jpeg" alt=""></a>
     </li>
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <a href="https://www.tokyoartbeat.com/en/articles/-/east-meets-west-at-marubeni-gallery"><img src="other_img\press4.jpeg" alt=""></a>     
     </li>
     <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <a href="https://www.tokyoartbeat.com/en/articles/-/tokyo-art-beat-has-been-completely-renewed"><img src="other_img\press5.png" alt=""></a>
     </li>
 </ul>
 
