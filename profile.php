@@ -106,9 +106,8 @@ while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>My Profile</title>
 </head>
 <body>
 
@@ -218,7 +217,6 @@ while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
       <p class="japanese"><?= $result_user["u_name"] ?></p>
       <img class="edit_start_btn" src="other_img/pen.png" alt="">
     </div>
-  <br>
   <!-- ユーザー自己紹介 -->
     <div class="user_des">
       <p class="japanese"><?= $result_user["u_des"] ?></p>

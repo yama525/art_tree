@@ -456,6 +456,21 @@ footer p {
   background-color: #575757;
 }
 
+.follow_btn {
+  margin: 20px 0 4px 0;
+  border-radius: 20px;
+  padding: 4px 20px;
+  color: white;
+}
+
+.follow {
+  background-color: #A71286;
+}
+
+.follow_cancel {
+  background-color: #b9b9b9;
+}
+
 /* モーダル本体 */
 /* （編集ボタンを押した時、表示される） */
 .my_modal {
@@ -591,6 +606,7 @@ footer p {
 .user_des {
   width: 500px;
   margin: 0 auto;
+  margin-top: 12px;
 }
 
 .my_modal__title {

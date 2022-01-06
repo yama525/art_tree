@@ -124,7 +124,11 @@ $arts="";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <title>Artist Detail</title>
 </head>
 
 
@@ -236,13 +240,17 @@ $arts="";
               </div>
       </div>
 
-<!-- アーティストの名前 （データベースから表示）-->
-<h2><?= $result_user["u_name"] ?></h2>
-<!-- アーティストの自己紹介 （データベースから表示）-->
-<p><?= $result_user["u_des"] ?></p>
+<!-- アーティストの名前 -->
+<div class="profile__name">
+      <p class="japanese"><?= $result_user["u_name"] ?></p>
+    </div>
+<!-- アーティストの自己紹介-->
+<div class="user_des">
+      <p class="japanese"><?= $result_user["u_des"] ?></p>
+    </div>
 
 <!-- 作品集 -->
-<h2>Artworks</h2>
+<h2 class="subtitle">Artworks</h2>
 <ul class="imglist">
     <!-- <li>
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
