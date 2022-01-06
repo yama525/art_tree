@@ -11,7 +11,8 @@ $a_des=$_GET["a_des"];
 $a_year=$_GET["a_year"];
 $art_id=$_GET["a_id"];
 
-// var_dump($a_img);
+// echo $art_id; // OK
+// var_dump($art_id);
 // exit();
 
 // DB 接続
@@ -32,7 +33,7 @@ if($_SESSION["u_img"] == null){
     // $art_id = $art_id; //session id とれたらここをオープン
     // $user_id = 1; // テスト。本番は↑
     // $art_id = 2; // テスト。本番は↑
-    // var_dump($art_id);
+    // var_dump($user_id);
     // exit();
 
     // データ抽出
@@ -47,8 +48,7 @@ if($_SESSION["u_img"] == null){
 
 
 // コメント処理----------
-    // 定義
-    $art_id = $_SESSION["art_id"]; // 仮
+    
 
     // データ抽出
     $stmt_comment = $pdo->prepare('SELECT * FROM comment_table WHERE art_id=:art_id ORDER BY indate DESC');
@@ -79,11 +79,7 @@ if($_SESSION["u_img"] == null){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
-    <title>Art Detail</title>
+    <title>Document</title>
 </head>
 <body>
 
@@ -95,7 +91,6 @@ if($_SESSION["u_img"] == null){
 <div class="header_space">
     <?= $view_profile_icon ?>
 </div>
-
 <!-- ロゴ -->
 <img class="logo" src="other_img/logo.png" alt="">
 <!-- ロゴの下の文章 -->
@@ -135,14 +130,12 @@ if($_SESSION["u_img"] == null){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- アートのタイトル（データベースから表示） -->
-<p class="main_guide_text">Artworks/<?=$a_title?></p>
-
+<p  class="main_guide_text">Artworks/<?=$a_title?></p>
 <div>
     <!-- 選択されたアートの画像 （データベースから表示）-->
         <div>
         <img src="art_img\<?=$a_img?>" alt="" width="600">
         </div>
-
     <!-- いいねボタン -->
         <div>
             <!-- いいねボタン -->
@@ -154,11 +147,11 @@ if($_SESSION["u_img"] == null){
     <!-- コメント入力欄 -->
         <form method="post" action="art_detail_comment.php">
             <div>
-                <textarea name="comment" id="" cols="30" rows="10" placeholder="コメントを入力"></textarea>
+                <textarea class="contact_form_textarea" name="comment" id="" cols="30" rows="10" placeholder="Add Comment"></textarea>
             </div>
     <!-- コメント投稿ボタン -->
             <div>
-                <input type="submit" class="post_comment" value="投稿">
+                <input type="submit" class="post_comment btn_positive btn" value="投稿">
             </div>
         </form>
 
@@ -168,34 +161,21 @@ if($_SESSION["u_img"] == null){
 </div>
 
 
-<div>
-    <!-- データベースから表示 -->
-    <p>Title</p>
-    <p><?=$a_title?></p>
-</div>
-<div>
-    <!-- データベースから表示 -->
-    <p>Year</p>
-    <p><?=$a_year?></p>
-</div>
-<div>
-    <!-- データベースから表示 -->
-    <p> Description</p>
-    <p><?=$a_des?></p>
-</div>
-
-
-<!-- ---------会社情報など（全ページ共通）--------- -->
-<!-- 区切り線 -->
-<hr style="border:0;border-top:1px solid black;">
-
-<!-- 会社住所 -->
-<p>
-M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
-38670 Adeje - Tenerife Islas - Spain
-</p>
-
-
+    <div>
+        <!-- データベースから表示 -->
+        <p class="explain">Title</p>
+        <p class="japanese font22"><?=$a_title?></p>
+    </div>
+    <div>
+        <!-- データベースから表示 -->
+        <p  class="explain">Year</p>
+        <p class="japanese"><?=$a_year?></p>
+    </div>
+    <div>
+        <!-- データベースから表示 -->
+        <p  class="explain"> Description</p>
+        <p class="japanese" style="margin-bottom:50px"><?=$a_des?></p>
+    </div>
 
 </main>
 
@@ -211,9 +191,6 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
 <p>© 2022 Art tree</p>
 
 </footer>
-
-
-
 
 <!-- ======================================================================================== -->
 <!-- =========================================script========================================= -->
@@ -237,7 +214,7 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
                 $(".like").show();
             });
 
-
+            
 
     // user_id > 1
     // art_id > 2 と仮定→params.appendの箇所を修正する！

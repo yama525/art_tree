@@ -36,16 +36,16 @@ $status_join_follow_art = $stmt_join_follow_art->execute();
 
 $view_join_follow_art = "";
 while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
-//   var_dump($result_join_follow_art);
+//   var_dump($result_join_follow_art["id"]);
 //   exit();
-  $view_join_follow_art .= '<li><a href="art_detail.php
-  ?a_id='.$result_join_follow_art["id"].'
-  &a_img='.$result_join_follow_art["a_img"].'
-  &a_title='.$result_join_follow_art["a_title"].'
-  &a_des='.$result_join_follow_art["a_des"].'
-  &a_year='.$result_join_follow_art["a_year"].'
+  $view_join_follow_art .= '<li><a href="art_detail.php?a_id='.$result_join_follow_art["id"].'
+&a_img='.$result_join_follow_art["a_img"].'
+&a_title='.$result_join_follow_art["a_title"].'
+&a_des='.$result_join_follow_art["a_des"].'
+&a_year='.$result_join_follow_art["a_year"].'
 
   "><img src="art_img/'.$result_join_follow_art["a_img"].'"></a></li>';
+
 }
 
 
@@ -76,6 +76,7 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 <header>
 <!-- ページ右上のプロフィール写真アイコン -->
 <div class="header_space">
+    <a href="art_register.php"><img class="header_space__img" src="other_img/plus_icon.png"></a>
     <?= $view_profile_icon ?>
 </div>
 
@@ -124,6 +125,7 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 
 <!-- アート一覧画面 （とりあえず５枚）-->
 <ul class="imglist">
+    
     <?=$view_join_follow_art?>
 
 </ul>
@@ -132,10 +134,6 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
     <div class="container jumbotron" id="view"><?=$view?></div>
 
 </div>
-
-<!-- もっと見るボタン -->
-
-<a href="art_register.php">アート登録</a>
 
 
 

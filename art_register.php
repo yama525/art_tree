@@ -97,20 +97,29 @@ if($_SESSION["u_img"] == null){
 
 <!-- Main[Start] -->
 
-<form method="POST" action="art_insert.php" enctype="multipart/form-data">
-  <div >
-   <fieldset class="register">
-    <legend class="register__Title">アート登録</legend>
-    <div class="register__form">
-      <label class="register__input">作品画像：<input type="file" name="a_img" class="register__input"></label><br>
-      <label class="register__input">タイトル：<input type="text" name="a_title"></label><br>
-      <label class="register__input">作品紹介<textArea name="a_des" rows="2" cols="20"></textArea></label><br>
-      <label class="register__input">制作年：<input type="text" name="a_year"></label><br>
-    </div>
-    <input type="submit" value="送信">
-    </fieldset>
+
+<div class="profile_edit">
+    <form method="post" action="art_insert.php" enctype="multipart/form-data">
+        <label for="file_upload" class="cms-thumb" >
+            <input type="file" id="file_upload" name="a_img" accept="image/*" required>
+            <img class="art_register_img" src="other_img/dummy_image.jpeg">
+        </label>
+        <div style="padding-top:12px">
+          <input class="art_register_input" type="text" name="a_title" placeholder="Title*">
+        </div>
+        <div style="padding-top:12px">
+          <input class="art_register_input" type="text" name="a_year" placeholder="Year">
+        </div>
+
+        <div>
+          <textarea class="profile_textarea japanese" name="a_des" cols="30" rows="10" placeholder="Description"></textarea>
+        </div>
+
+        <div>
+          <input class="btn_positive btn" type="submit" value="Add">   <!-- 登録ボタン -->
+        </div>
+    </form>
   </div>
-</form>
 <!-- Main[End] -->
 
 
@@ -122,4 +131,46 @@ if($_SESSION["u_img"] == null){
 <p>© 2022 Art tree</p>
 
 </footer>
+
+
+<style>
+    label > input {
+        display:none; アップロードボタンのスタイルを無効にする
+    }
+
+
+    .cms-thumb{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+
+
+</style>
+
+<script src="http://code.jquery.com/jquery-3.0.0.js"></script>
+<script>
+// ーーーーーーーーーーーー 画像サムネイル表示 ーーーーーーーーーーーー
+  // アップロードするファイルを選択
+  $('input[type=file]').change(function() {
+    //選択したファイルを取得し、file変数に格納
+    var file = $(this).prop('files')[0];
+    // 画像以外は処理を停止
+    if (!file.type.match('image.*')) {
+      // クリア
+      $(this).val(''); //選択されてるファイルを空にする
+      $('.cms-thumb > img').html(''); //画像表示箇所を空にする
+      return;
+    }
+    // 画像表示
+    var reader = new FileReader(); //1
+    reader.onload = function() {   //2
+      $('.cms-thumb > img').attr('src', reader.result);
+    }
+    reader.readAsDataURL(file);    //3
+  });
+
+
+</script>
 </html>

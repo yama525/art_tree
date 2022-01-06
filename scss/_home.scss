@@ -2,6 +2,8 @@
 @charset 'utf-8';
 
 .about{
+    width: 90%;
+    margin: 0 auto;
     &__siteTitle1{
         font-size: 24px;
         color: $main-color;
@@ -10,14 +12,34 @@
         font-size: 24px;
     }
 
-// テスト1
-    // .about__siteTitle1{
-    //     font-size: 24px;
-    //     color: $main-color;
-    // }
-    // .about__siteTitle2{
-    //     font-size: 24px;
-    // }
+}
 
+
+.contact_form{
+    border: 0.1px solid #dfdfdf;
+    border-radius: 2px;
+    padding: 4px 12px;
+    margin-bottom: 8px;
+    width: 270px;
+    /* 選択時 */
+    &:focus { 
+        border: 2px solid $main_color;
+        outline: 0;
+    }
+}
+
+
+.contact_form_textarea{
+    border: 0.1px solid #dfdfdf;
+    border-radius: 2px;
+    padding: 4px 12px;
+    margin-bottom: 8px;
+    width: 360px;
+    margin-top: 6px;
+    /* 選択時 */
+    &:focus { 
+        border: 2px solid $main_color;
+        outline: 0;
+    }
 }
 

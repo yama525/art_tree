@@ -5,6 +5,7 @@ body {
 
 body h1 {
   font-size: 85px;
+  margin-top: 20px;
 }
 
 body h2 {
@@ -436,7 +437,7 @@ footer p {
   padding: 10px 25px;
   cursor: pointer;
   border-radius: 2px;
-  margin: 20px 8px;
+  margin: 20px 8px 5px;
   color: white;
 }
 
@@ -525,7 +526,13 @@ footer p {
 }
 
 .like_icon {
-  width: 45px;
+  width: 26px;
+  margin: 8px;
+}
+
+.about {
+  width: 90%;
+  margin: 0 auto;
 }
 
 .about__siteTitle1 {
@@ -535,6 +542,35 @@ footer p {
 
 .about__siteTitle2 {
   font-size: 24px;
+}
+
+.contact_form {
+  border: 0.1px solid #dfdfdf;
+  border-radius: 2px;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+  width: 270px;
+  /* 選択時 */
+}
+
+.contact_form:focus {
+  border: 2px solid #A71286;
+  outline: 0;
+}
+
+.contact_form_textarea {
+  border: 0.1px solid #dfdfdf;
+  border-radius: 2px;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+  width: 360px;
+  margin-top: 6px;
+  /* 選択時 */
+}
+
+.contact_form_textarea:focus {
+  border: 2px solid #A71286;
+  outline: 0;
 }
 
 .subtitle {
@@ -553,6 +589,7 @@ footer p {
   border: 0.1px solid #dfdfdf;
   border-radius: 2px;
   font-weight: bold;
+  padding: 4px 12px;
   /* 選択時 */
 }
 
@@ -677,5 +714,34 @@ footer p {
 .register__input {
   font-size: 16px;
   width: 100%;
+}
+
+.explain {
+  color: #6d6d6d;
+  margin-top: 10px;
+}
+
+.font22 {
+  font-size: 22px;
+}
+
+.art_register_img {
+  width: 400px;
+  margin-bottom: 14px;
+  margin-top: 40px;
+}
+
+.art_register_input {
+  border: 0.1px solid #dfdfdf;
+  border-radius: 2px;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+  width: 270px;
+  /* 選択時 */
+}
+
+.art_register_input:focus {
+  border: 2px solid #A71286;
+  outline: 0;
 }
 /*# sourceMappingURL=main.css.map */

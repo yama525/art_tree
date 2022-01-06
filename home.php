@@ -122,21 +122,21 @@ if($_SESSION["u_img"] == null){
 <div class="about" id="about">
     
     <h1>about.</h1>
-    <p class="about__siteTitle1">M.A.D.S.</p>
+    <p class="about__siteTitle1">ARTTREE</p>
     <p class="about__siteTitle2">Art Mediator, Advisor, Dealer, Seeker. </p>
 
     <p class="about__text">
-    M.A.D.S. ART GALLERY is a company operating internationally in the artistic field. It already boasts a contemporary physical venue located in one of the most lively areas of Milan, Italy totally set up with screens 50”, 55”, 60”, 85" vertical and horizontal size, to optimally accomodate all kinds of dimensions and to make the real dimensions of the work stand out, video projectors and touch screen monitors allowing the viewer to zoom and enhance every detail for a great result. It is also equipped with the VR OCULUS virtual reality viewer device to host photos and videos 3D.<br>
+    ARTTREE GALLERY is a company operating internationally in the artistic field. It already boasts a contemporary physical venue located in one of the most lively areas of Milan, Italy totally set up with screens 50”, 55”, 60”, 85" vertical and horizontal size, to optimally accomodate all kinds of dimensions and to make the real dimensions of the work stand out, video projectors and touch screen monitors allowing the viewer to zoom and enhance every detail for a great result. It is also equipped with the VR OCULUS virtual reality viewer device to host photos and videos 3D.<br>
     <br>
-    M.A.D.S. ART GALLERY is able to create and guarantee a continuous multimedia exhibition with the use of these new video system projection technologies allowing buyers, press, public, collectors and artists to enjoy the exhibitions in streaming all over the world, in every moment, through all its digital channels and achieving sales anywhere in the world, because operating on an international level with media and digital tools, there is no need for someone coming physically in location to close the deal.<br>
+    ARTTREE GALLERY is able to create and guarantee a continuous multimedia exhibition with the use of these new video system projection technologies allowing buyers, press, public, collectors and artists to enjoy the exhibitions in streaming all over the world, in every moment, through all its digital channels and achieving sales anywhere in the world, because operating on an international level with media and digital tools, there is no need for someone coming physically in location to close the deal.<br>
     <br>
     It is the first multimedia gallery with this permanent, digital, unique and innovative set-up and the first totally INCLUSIVE gallery: there is no work of art that it cannot exhibit. Whatever the material that composes it, its size, its support. It is a reference point for emerging and established artists, to launch or consolidate their career. A reference point for museums, galleries, institutions, associations, foundations, curators, critics, collectors as one of its primary objectives is to highlight the artist, his talent, his portfolio, making it accessible to an increasingly international audience.<br>
     <br>
-    M.A.D.S. has therefore revolutionised the process of presentation of the artworks, increasing the visual quality of the details, their three-dimensionality and materiality through high definition and augmented reality, eliminating costs (as shipping, packaging, insurance, customs), time and bureaucracy, as well as protecting and safeguarding the integrity of the original artworks.<br>
+    ARTTREE has therefore revolutionised the process of presentation of the artworks, increasing the visual quality of the details, their three-dimensionality and materiality through high definition and augmented reality, eliminating costs (as shipping, packaging, insurance, customs), time and bureaucracy, as well as protecting and safeguarding the integrity of the original artworks.<br>
     <br>
-    An evolution for the art market, a new trend. Thousands of artists from all over the world find in M.A.D.S. the answer to their needs: exhibition, curatela, advertising, marketing and promotion, aimed to ensure a long-lasting visibility on a worldwide scale, thanks to the team of professionals that includes webmaster, graphic, photographers, video reporters, art curators, art director, commercial director, communications manager, mediators, advisors, dealers, seekers at their service.<br>
+    An evolution for the art market, a new trend. Thousands of artists from all over the world find in ARTTREE the answer to their needs: exhibition, curatela, advertising, marketing and promotion, aimed to ensure a long-lasting visibility on a worldwide scale, thanks to the team of professionals that includes webmaster, graphic, photographers, video reporters, art curators, art director, commercial director, communications manager, mediators, advisors, dealers, seekers at their service.<br>
     <br>
-    In July 2021, M.A.D.S. ART GALLERY opened a new headquarters: a new digital physical gallery based in Fuerteventura, Canary Islands, becoming larger and increasingly international.<br>
+    In July 2021, ARTTREE GALLERY opened a new headquarters: a new digital physical gallery based in Fuerteventura, Canary Islands, becoming larger and increasingly international.<br>
     </p>
 
     <!-- about の動画（一旦ダミー画像入れてます） -->
@@ -164,17 +164,17 @@ Corso San Gottardo 18, 20136 Milan, Italy - Fuerteventura, Canary Islands, Spain
     <!-- お問合せフォーム -->
     <form method="post" action="">
         <div>
-            <input type="text" name="" placeholder="Name*" value="">
+            <input class="contact_form" type="text" name="" placeholder="Name*" value="">
         </div>
         <div>
-            <input type="text" name="" placeholder="Email*" value="">
+            <input class="contact_form" type="text" name="" placeholder="Email*" value="">
         </div>
         <div>
-            <input type="text" name="" placeholder="Subject*" value="">
+            <input class="contact_form" type="text" name="" placeholder="Subject*" value="">
         </div>
-        <textarea name="" id="" placeholder="Message*" cols="30" rows="10"></textarea>
+            <textarea class="contact_form_textarea japanese" name="" id="" placeholder="Message*" cols="30" rows="10"></textarea>
         <div>
-            <input type="submit" value="Send">
+            <input class="btn btn_positive" type="submit" value="Send">
         </div>
 
     </form>
@@ -188,7 +188,7 @@ Corso San Gottardo 18, 20136 Milan, Italy - Fuerteventura, Canary Islands, Spain
 
 <!-- 会社住所 -->
 <p>
-M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
+ARTTREE Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
 38670 Adeje - Tenerife Islas - Spain
 </p>
 
