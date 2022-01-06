@@ -16,6 +16,16 @@ if($_SESSION["u_img"] == null){
   }
 
 
+  $stmt_join_follow_art = $pdo->prepare(" SELECT * FROM art_table");
+  $status_join_follow_art = $stmt_join_follow_art->execute();
+  
+  $view_all_art = "";
+  while($result_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
+    // var_dump($result_join_follow_art["u_img"]);
+    $view_all_art .= '<li><img src="art_img/'.$result_art["a_img"].'"></li>';
+  }
+
+
 ?>
 
 
@@ -67,10 +77,10 @@ if($_SESSION["u_img"] == null){
         <a href="press.php">press.</a>
     </li>
     <li>
-        <a href="#about">about.</a>
+        <a href="home.php#about">about.</a>
     </li>
     <li>
-        <a href="#contact">contact.</a>
+        <a href="home.php#contact">contact.</a>
     </li>
 </ul>
 
@@ -94,31 +104,19 @@ if($_SESSION["u_img"] == null){
 
     <!-- artworks の写真一覧（とりあえず５枚） -->
     <ul class="imglist">
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
+    <?=$view_all_art?>
+
 </ul>
 
     <!-- スクロール時に背景が固定された画像 -->
-    <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    <!-- <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt=""> -->
 
 </div>
 
 
 <!-- ---------about の見出し--------- -->
-<div id="about">
+<div class="about" id="about">
+    
     <h1>about.</h1>
     <p class="about__siteTitle1">M.A.D.S.</p>
     <p class="about__siteTitle2">Art Mediator, Advisor, Dealer, Seeker. </p>
@@ -144,6 +142,20 @@ if($_SESSION["u_img"] == null){
 
 
 <!-- ---------contact. の見出し--------- -->
+<<<<<<< HEAD
+<h1 id="contact">contact.</h1>
+<!-- 連絡先 -->
+<p>T. +39 339 52 40 867   |   mads@madsgallery.art</p>
+<!-- 説明文と住所 -->
+<p>
+Guests are received by appointment only, please write us by mail or use the form below specifying the reasons for the request<br>
+<br>
+Events Locations<br>
+Corso San Gottardo 18, 20136 Milan, Italy - Fuerteventura, Canary Islands, Spain
+<br>
+<br>
+</p>
+=======
 <div id="contact">
     <h1>contact.</h1>
     <!-- 連絡先 -->
@@ -157,6 +169,7 @@ if($_SESSION["u_img"] == null){
     <br>
     <br>
     </p>
+>>>>>>> jooji
 
     <!-- お問合せフォーム -->
     <form method="post" action="">
