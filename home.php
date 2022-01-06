@@ -16,6 +16,16 @@ if($_SESSION["u_img"] == null){
   }
 
 
+  $stmt_join_follow_art = $pdo->prepare(" SELECT * FROM art_table");
+  $status_join_follow_art = $stmt_join_follow_art->execute();
+  
+  $view_all_art = "";
+  while($result_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
+    // var_dump($result_join_follow_art["u_img"]);
+    $view_all_art .= '<li><img src="art_img/'.$result_art["a_img"].'"></li>';
+  }
+
+
 ?>
 
 
@@ -94,25 +104,12 @@ if($_SESSION["u_img"] == null){
 
     <!-- artworks の写真一覧（とりあえず５枚） -->
     <ul class="imglist">
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
+    <?=$view_all_art?>
+
 </ul>
 
     <!-- スクロール時に背景が固定された画像 -->
-    <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    <!-- <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt=""> -->
 
 </div>
 
