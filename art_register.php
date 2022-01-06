@@ -54,6 +54,7 @@ if($_SESSION["u_img"] == null){
     <p>the digital mixed reality and NFT art gallery</p>
   </div>
 
+
 <!-- ロゴ
 <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
 ロゴの下の文章 -->

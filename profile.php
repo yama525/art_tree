@@ -9,22 +9,21 @@ $pdo = db_conn();
 
 // 右上アイコンで u_img がない場合はダミー画像、ある場合は u_img を表示。
 if($_SESSION["u_img"] == null){
-  $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="https://placehold.jp/24/e3e3e6/ffffff/200x200.png?text=%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%0A%E7%94%BB%E5%83%8F%E3%82%92%E8%BF%BD%E5%8A%A0" alt="プロフィール画像"></a>';
+  $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="other_img/dammy_person.png" alt="プロフィール画像"></a>';
 }else{
   $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="artist_img/'.$_SESSION["u_img"].'" alt="プロフィール画像"></a>';
 }
 
 // u_img がない場合はダミー画像、ある場合は u_img を表示。
 if($_SESSION["u_img"] == null){
-  $view = '<img class="profile_img" src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ">';
+  $view = '<img class="profile_img" src="other_img/dammy_person.png">';
 }else{
   $view = '<img class="profile_img" src="artist_img/'.$_SESSION["u_img"].'">';
 }
 
 
 
-// $user_id = $_SESSION["id"]; // 本番はこちら
-$user_id = 1; //（仮）
+$user_id = $_SESSION["id"]; // 本番はこちら
 // user_table からのデータ抽出
 $stmt_user = $pdo->prepare('SELECT * FROM user_table WHERE id=:id');
 $stmt_user->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
@@ -146,7 +145,7 @@ while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
             <input type="file" id="file_upload" name="u_img" accept="image/*" required>
             <?= $view ?>
         </label>
-        <div>
+        <div style="padding-top:12px">
           <input class="profile_input" type="text" name="u_name" value="<?= $result_user["u_name"] ?>">
         </div>
 
