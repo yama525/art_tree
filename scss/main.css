@@ -34,6 +34,11 @@ body .japanese {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+body .main_guide_text {
+  margin: 30px 0px 15px 0px;
+  color: #7a7a7a;
+}
+
 /*! sanitize.css v3.2.0 | CC0 1.0 Public Domain | github.com/10up/sanitize.css */
 /*
  * Normalization
@@ -631,8 +636,9 @@ footer p {
 
 .my_modal__text {
   margin-left: 20px;
+}
 
-  .register {
+.register {
   border: solid;
 }
 

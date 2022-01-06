@@ -112,7 +112,7 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- 検索バー -->
-<p>Artworks/All</p>
+<p class="main_guide_text">Artworks/All</p>
 <input type="text" placeholder="Search artworks...">
 
 

@@ -93,7 +93,7 @@ if($status==false) {
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- 検索バー -->
-<p>Artists/All</p>
+<p class="main_guide_text">Artists/All</p>
 <input type="text" placeholder="Search artists...">
 
 
