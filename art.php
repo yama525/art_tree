@@ -13,59 +13,19 @@ if($_SESSION["u_img"] == null){
     $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="artist_img/'.$_SESSION["u_img"].'" alt="プロフィール画像"></a>';
 }
 
+// inner join で follow_table と user_table を接続
+$stmt_join_follow_art = $pdo->prepare(" SELECT * FROM art_table AS A_T
+INNER JOIN follow_table AS F_T ON F_T.followed_id = A_T.user_id
+WHERE F_T.followee_id = :followee_id");
+$stmt_join_follow_art->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
+$status_join_follow_art = $stmt_join_follow_art->execute();
 
+$view_join_follow_art = "";
+while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
+  // var_dump($result_join_follow_art["u_img"]);
+  $view_join_follow_art .= '<li><img src="art_img/'.$result_join_follow_art["a_img"].'"></li>';
+}
 
-// //２．データ登録SQL作成
-// $stmt = $pdo->prepare("SELECT * FROM art_table WHERE user_id=:user_id");
-// $stmt->bindValue(':user_id', $_SESSION["id"], PDO::PARAM_STR);
-// $status = $stmt->execute();
-
-// //３．データ表示
-// $view="";
-// if($status==false) {
-//   sql_error($stmt);
-// }else{
-//   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
-//     $view .= '<img src="art_img/'.$r["a_img"].'" width="200">';
-//   }
-// }
-
-// 自分のidを取得、そこから自分のフォローしているユーザーのidを取得
-$stmt = $pdo->prepare("SELECT * FROM follow_table WHERE followee_id=:followee_id");
-$stmt->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
-$status = $stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$followed_id = $result["followed_id"];
-
-// var_dump($result);
-// exit();
-
-
- 
-// // フォローしているユーザーのidとそのユーザーの保有している写真を接続
-// $stmt2 = $pdo->prepare(" SELECT * FROM art_table AS A_T
-// INNER JOIN follow_table AS F_T ON F_T.followed_id = A_T.user_id
-// // WHERE F_T.followee_id = :followee_id && F_T.followed_id = :followed_id");
-
-// $stmt_follow_art = $pdo->prepare('SELECT * FROM follow_table 
-// inner join art_table on (follow_table.followee_id=art_table.user_id) AND (followee_id=:id)');
-// $stmt_follow_art->bindValue(':id', $_SESSION["id"], PDO::PARAM_STR);
-// // $stmt2->bindValue(':followed_id', $followed_id, PDO::PARAM_STR);
-// $status2 = $stmt2->execute();
-
-// $followed_arts="";
-// // $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
-//   while( $followed_art = $stmt_foolow_art->fetch(PDO::FETCH_ASSOC)){ 
-//     $followed_arts .= '<li><img src="art_img/'.$followed_art["a_img"].'" width="200"></li>';
-//   }
-
-// var_dump($followed_arts);
-// exit();
-
-
-
-
-// <img src="art_img/dammy.png" alt="">
 
 ?>
 
@@ -135,21 +95,8 @@ $followed_id = $result["followed_id"];
 
 <!-- アート一覧画面 （とりあえず５枚）-->
 <ul class="imglist">
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
-    <li>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
-    </li>
+    <?=$view_join_follow_art?>
+
 </ul>
 
 <div>
