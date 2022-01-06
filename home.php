@@ -64,10 +64,10 @@ if($_SESSION["u_img"] == null){
         <a href="press.php">press.</a>
     </li>
     <li>
-        <a href="">about.</a>
+        <a href="home.php#about">about.</a>
     </li>
     <li>
-        <a href="">contact.</a>
+        <a href="home.php#contact">contact.</a>
     </li>
 </ul>
 
@@ -115,7 +115,7 @@ if($_SESSION["u_img"] == null){
 
 
 <!-- ---------about の見出し--------- -->
-<div class="about">
+<div class="about" id="about">
     <h1>about.</h1>
     <p class="about__siteTitle1">M.A.D.S.</p>
     <p class="about__siteTitle2">Art Mediator, Advisor, Dealer, Seeker. </p>
@@ -141,7 +141,7 @@ if($_SESSION["u_img"] == null){
 
 
 <!-- ---------contact. の見出し--------- -->
-<h1>contact.</h1>
+<h1 id="contact">contact.</h1>
 <!-- 連絡先 -->
 <p>T. +39 339 52 40 867   |   mads@madsgallery.art</p>
 <!-- 説明文と住所 -->

@@ -62,10 +62,10 @@ if($_SESSION["u_img"] == null){
         <a href="press.php">press.</a>
     </li>
     <li>
-        <a href="">about.</a>
+        <a href="home.php#about">about.</a>
     </li>
     <li>
-        <a href="">contact.</a>
+        <a href="home.php#contact">contact.</a>
     </li>
 </ul>
 

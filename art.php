@@ -114,10 +114,10 @@ $followed_id = $result["followed_id"];
         <a href="press.php">press.</a>
     </li>
     <li>
-        <a href="">about.</a>
+        <a href="home.php#about">about.</a>
     </li>
     <li>
-        <a href="">contact.</a>
+        <a href="home.php#contact">contact.</a>
     </li>
 </ul>
 
