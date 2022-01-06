@@ -16,7 +16,8 @@
     border: 0.1px solid #dfdfdf;
     border-radius:2px;
     font-weight: bold;
-/* 選択時 */
+    padding: 4px 12px;
+    /* 選択時 */
     &:focus { 
     border: 2px solid $main_color;
     outline: 0;
