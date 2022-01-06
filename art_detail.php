@@ -5,6 +5,14 @@
 // session_start(); //session id とれたらここをオープン
 include("funcs.php");
 
+$a_img=$_GET["a_img"];
+$a_title=$_GET["a_title"];
+$a_des=$_GET["a_des"];
+$a_year=$_GET["a_year"];
+
+// var_dump($a_year);
+// exit();
+
 // DB 接続
 $pdo = db_conn();
 
@@ -125,7 +133,7 @@ if($_SESSION["u_img"] == null){
 <div>
     <!-- 選択されたアートの画像 （データベースから表示）-->
         <div>
-        <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+        <img src="art_img\<?=$a_img?>" alt="" width="600">
         </div>
 
     <!-- いいねボタン -->
@@ -152,27 +160,21 @@ if($_SESSION["u_img"] == null){
 
 </div>
 
-<!-- アートのタイトル （データベースから表示）-->
-<h2>アートのタイトル</h2>
-<!-- アート作成年月日 （データベースから表示）-->
-<p>アート作成の年</p>
-<!-- アーティスト名（データベースから表示） -->
-<p>アーティスト名</p>
 
 <div>
     <!-- データベースから表示 -->
     <p>Title</p>
-    <p>アートタイトル</p>
+    <p><?=$a_title?></p>
 </div>
 <div>
     <!-- データベースから表示 -->
     <p>Year</p>
-    <p>アート作成の年</p>
+    <p><?=$a_year?></p>
 </div>
 <div>
     <!-- データベースから表示 -->
     <p> Description</p>
-    <p>アートの説明文</p>
+    <p><?=$a_des?></p>
 </div>
 
 
