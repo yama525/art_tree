@@ -249,10 +249,11 @@ while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
 
 <!-- 自分の作品集 -->
 <h2 class="subtitle">Artworks</h2>
-<ul class="imglist">
-    <?= $view_user_art ?>
-</ul>
-    
+<div class="imglist_wrap">
+  <ul class="imglist">
+      <?= $view_user_art ?>
+  </ul>
+</div>
   
 
 </main>

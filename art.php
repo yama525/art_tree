@@ -117,7 +117,7 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 <main>
 <!-- 検索バー -->
 <p class="main_guide_text">Artworks/All</p>
-<input type="text" placeholder="Search artworks...">
+<!-- <input type="text" placeholder="Search artworks..."> -->
 
 
 <!-- アート一覧画面 （とりあえず５枚）-->
@@ -132,7 +132,6 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 </div>
 
 <!-- もっと見るボタン -->
-<button>Lead More</button><br>
 
 <a href="art_register.php">アート登録</a>
 

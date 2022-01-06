@@ -98,7 +98,7 @@ if($status==false) {
 <main>
 <!-- 検索バー -->
 <p class="main_guide_text">Artists/All</p>
-<input type="text" placeholder="Search artists...">
+<!-- <input type="text" placeholder="Search artists..."> -->
 
 
 <!-- アーティスト一覧画面 （とりあえず５枚）-->
@@ -108,8 +108,6 @@ if($status==false) {
 
 </ul>
 
-<!-- もっと見るボタン -->
-<button>Lead More</button>
 
 
 

@@ -84,7 +84,7 @@ if($_SESSION["u_img"] == null){
 <main>
 <!-- 検索バー -->
 <p class="main_guide_text">Press/All</p>
-<input type="text" placeholder="Search press...">
+<!-- <input type="text" placeholder="Search press..."> -->
 
 
 <!-- プレス一覧画面 （とりあえず５枚）-->
@@ -103,8 +103,7 @@ if($_SESSION["u_img"] == null){
     </li>
 </ul>
 
-<!-- もっと見るボタン -->
-<button>Lead More</button>
+
 
 
 
