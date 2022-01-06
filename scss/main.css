@@ -508,6 +508,8 @@ footer p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .imglist img {
@@ -516,6 +518,10 @@ footer p {
   height: 330px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.imglist_wrap {
+  width: 100%;
 }
 
 .like_icon {

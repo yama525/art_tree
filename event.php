@@ -81,7 +81,7 @@ if($_SESSION["u_img"] == null){
 <main>
 <!-- 検索バー -->
 <p class="main_guide_text">Events/All</p>
-<input type="text" placeholder="Search events...">
+<!-- <input type="text" placeholder="Search events..."> -->
 
 
 <!-- イベント一覧画面 （とりあえず５枚）-->
@@ -101,8 +101,7 @@ if($_SESSION["u_img"] == null){
 
 </ul>
 
-<!-- もっと見るボタン -->
-<button>Lead More</button>
+
 
 
 
