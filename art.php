@@ -34,7 +34,7 @@ if($_SESSION["u_img"] == null){
 $stmt = $pdo->prepare("SELECT * FROM follow_table WHERE followee_id=:followee_id");
 $stmt->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
 $status = $stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $followed_id = $result["followed_id"];
  
 // フォローしているユーザーのidとそのユーザーの保有している写真を接続
