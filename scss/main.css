@@ -544,8 +544,21 @@ footer p {
   margin: 0 auto;
 }
 
-.register__input {
+.register {
+  border: solid;
+}
+
+.register__form {
   display: block;
-  color: blue;
+}
+
+.register__Title {
+  font-size: 24px;
+  color: #A71286;
+}
+
+.register__input {
+  font-size: 16px;
+  width: 100%;
 }
 /*# sourceMappingURL=main.css.map */

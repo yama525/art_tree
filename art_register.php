@@ -91,15 +91,18 @@ if($_SESSION["u_img"] == null){
 <!-- ------------------------------------------------------ -->
 
 <!-- Main[Start] -->
+
 <form method="POST" action="art_insert.php" enctype="multipart/form-data">
   <div >
    <fieldset class="register">
     <legend class="register__Title">アート登録</legend>
-     <label class="register__input">作品画像：<input type="file" name="a_img" class="register__input"></label><br>
-     <label class="register__input">タイトル：<input type="text" name="a_title"></label><br>
-     <label class="register__input">作品紹介<textArea name="a_des" rows="2" cols="20"></textArea></label><br>
-     <label class="register__input">制作年：<input type="text" name="a_year"></label><br>
-     <input type="submit" value="送信">
+    <div class="register__form">
+      <label class="register__input">作品画像：<input type="file" name="a_img" class="register__input"></label><br>
+      <label class="register__input">タイトル：<input type="text" name="a_title"></label><br>
+      <label class="register__input">作品紹介<textArea name="a_des" rows="2" cols="20"></textArea></label><br>
+      <label class="register__input">制作年：<input type="text" name="a_year"></label><br>
+    </div>
+    <input type="submit" value="送信">
     </fieldset>
   </div>
 </form>
