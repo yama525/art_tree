@@ -79,7 +79,7 @@ if($_SESSION["u_img"] == null){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- 検索バー -->
-<p>Press/All</p>
+<p class="main_guide_text">Press/All</p>
 <input type="text" placeholder="Search press...">
 
 

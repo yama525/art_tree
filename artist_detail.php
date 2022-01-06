@@ -178,7 +178,7 @@ $arts="";
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- アーティスト名（データベースから表示） -->
-<p>Artworks/<?= $result_user["u_name"] ?></p>
+<p class="main_guide_text">Artworks/<?= $result_user["u_name"] ?></p>
 
 <!-- 選択されたアーティストの画像 （データベースから表示）-->
 <img class="profile_img" src="artist_img/<?=$result_user["u_img"] ?>" width="600" height="600">
