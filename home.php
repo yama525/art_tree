@@ -140,7 +140,7 @@ if($_SESSION["u_img"] == null){
     </p>
 
     <!-- about の動画（一旦ダミー画像入れてます） -->
-    <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
+    <!-- <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt=""> -->
 
 </div>
 
