@@ -67,17 +67,10 @@ if($_SESSION["u_img"] == null){
         <a href="press.php">press.</a>
     </li>
     <li>
-<<<<<<< HEAD
         <a href="home.php#about">about.</a>
     </li>
     <li>
         <a href="home.php#contact">contact.</a>
-=======
-        <a href="#about">about.</a>
-    </li>
-    <li>
-        <a href="#contact">contact.</a>
->>>>>>> jooji
     </li>
 </ul>
 
@@ -125,11 +118,8 @@ if($_SESSION["u_img"] == null){
 
 
 <!-- ---------about の見出し--------- -->
-<<<<<<< HEAD
 <div class="about" id="about">
-=======
-<div id="about">
->>>>>>> jooji
+    
     <h1>about.</h1>
     <p class="about__siteTitle1">M.A.D.S.</p>
     <p class="about__siteTitle2">Art Mediator, Advisor, Dealer, Seeker. </p>
