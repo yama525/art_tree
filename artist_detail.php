@@ -8,10 +8,6 @@ include("funcs.php");
 $artist_id = $_GET['artist_id'];
 
 
-// echo('<pre>');
-// var_dump($artist_id);
-// echo('</pre>');
-
 // DB 接続
 $pdo = db_conn();
 
@@ -83,6 +79,8 @@ $arts="";
     <link rel="stylesheet" href="scss/main.css">
     <title>Document</title>
 </head>
+
+
 <body>
 
 <!-- ------------------------------------------------------ -->
