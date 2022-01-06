@@ -543,4 +543,9 @@ footer p {
   width: 500px;
   margin: 0 auto;
 }
+
+.register__input {
+  display: block;
+  color: blue;
+}
 /*# sourceMappingURL=main.css.map */

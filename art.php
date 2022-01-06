@@ -34,16 +34,33 @@ if($_SESSION["u_img"] == null){
 $stmt = $pdo->prepare("SELECT * FROM follow_table WHERE followee_id=:followee_id");
 $stmt->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
 $status = $stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $followed_id = $result["followed_id"];
+
+// var_dump($result);
+// exit();
+
+
  
-// フォローしているユーザーのidとそのユーザーの保有している写真を接続
-$stmt2 = $pdo->prepare(" SELECT * FROM art_table AS A_T
-INNER JOIN follow_table AS F_T ON F_T.followed_id = A_T.user_id
-WHERE F_T.followee_id = :followee_id && F_T.followed_id = :followed_id");
-$stmt2->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
-$stmt2->bindValue(':followed_id', $followed_id, PDO::PARAM_STR);
-$status2 = $stmt2->execute();
+// // フォローしているユーザーのidとそのユーザーの保有している写真を接続
+// $stmt2 = $pdo->prepare(" SELECT * FROM art_table AS A_T
+// INNER JOIN follow_table AS F_T ON F_T.followed_id = A_T.user_id
+// // WHERE F_T.followee_id = :followee_id && F_T.followed_id = :followed_id");
+
+// $stmt_follow_art = $pdo->prepare('SELECT * FROM follow_table 
+// inner join art_table on (follow_table.followee_id=art_table.user_id) AND (followee_id=:id)');
+// $stmt_follow_art->bindValue(':id', $_SESSION["id"], PDO::PARAM_STR);
+// // $stmt2->bindValue(':followed_id', $followed_id, PDO::PARAM_STR);
+// $status2 = $stmt2->execute();
+
+// $followed_arts="";
+// // $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
+//   while( $followed_art = $stmt_foolow_art->fetch(PDO::FETCH_ASSOC)){ 
+//     $followed_arts .= '<li><img src="art_img/'.$followed_art["a_img"].'" width="200"></li>';
+//   }
+
+// var_dump($followed_arts);
+// exit();
 
 
 
