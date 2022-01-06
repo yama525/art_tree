@@ -2,7 +2,7 @@
 
 
 <?php
-// session_start(); //session id とれたらここをオープン
+session_start(); 
 include("funcs.php");
 
 $a_img=$_GET["a_img"];
@@ -10,7 +10,7 @@ $a_title=$_GET["a_title"];
 $a_des=$_GET["a_des"];
 $a_year=$_GET["a_year"];
 
-// var_dump($a_year);
+// var_dump($_SESSION["art_id"]);
 // exit();
 
 // DB 接続
@@ -27,10 +27,10 @@ if($_SESSION["u_img"] == null){
 
 // いいね処理----------
     // ログインしている user の id とlike_table の user_id を一致させる
-    // $user_id = $_SESSION["user_id"]; //session id とれたらここをオープン
-    // $art_id = $_SESSION["art_id"]; //session id とれたらここをオープン
-    $user_id = 1; // テスト。本番は↑
-    $art_id = 2; // テスト。本番は↑
+    $user_id = $_SESSION["id"]; //session id とれたらここをオープン
+    $art_id = $_SESSION["art_id"]; //session id とれたらここをオープン
+    // $user_id = 1; // テスト。本番は↑
+    // $art_id = 2; // テスト。本番は↑
 
     // データ抽出
     $stmt_like = $pdo->prepare('SELECT * FROM like_table WHERE user_id=:user_id && art_id=:art_id ');
@@ -45,7 +45,7 @@ if($_SESSION["u_img"] == null){
 
 // コメント処理----------
     // 定義
-    $art_id = 2; // 仮
+    $art_id = $_SESSION["art_id"]; // 仮
 
     // データ抽出
     $stmt_comment = $pdo->prepare('SELECT * FROM comment_table WHERE art_id=:art_id ORDER BY indate DESC');
