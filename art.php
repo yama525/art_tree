@@ -13,6 +13,7 @@ if($_SESSION["u_img"] == null){
     $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="artist_img/'.$_SESSION["u_img"].'" alt="プロフィール画像"></a>';
 }
 
+
 // inner join で follow_table と user_table を接続
 $stmt_join_follow_art = $pdo->prepare(" SELECT * FROM art_table AS A_T
 INNER JOIN follow_table AS F_T ON F_T.followed_id = A_T.user_id
