@@ -35,9 +35,17 @@ $status_join_follow_art = $stmt_join_follow_art->execute();
 
 $view_join_follow_art = "";
 while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
-  // var_dump($result_join_follow_art["u_img"]);
-  $view_join_follow_art .= '<li><img src="art_img/'.$result_join_follow_art["a_img"].'"></li>';
+//   var_dump($result_join_follow_art);
+//   exit();
+  $view_join_follow_art .= '<li><a href="art_detail.php
+  ?a_img='.$result_join_follow_art["a_img"].'
+  &a_title='.$result_join_follow_art["a_title"].'
+  &a_des='.$result_join_follow_art["a_des"].'
+  &a_year='.$result_join_follow_art["a_year"].'
+  "><img src="art_img/'.$result_join_follow_art["a_img"].'"></a></li>';
 }
+
+
 
 
 ?>
@@ -53,6 +61,7 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
     <title>Document</title>
 </head>
 <body>
+
 
 <!-- ------------------------------------------------------ -->
 <!---------------------- ここから header ---------------------->

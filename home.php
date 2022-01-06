@@ -142,7 +142,7 @@ if($_SESSION["u_img"] == null){
 
 
 <!-- ---------contact. の見出し--------- -->
-<<<<<<< HEAD
+
 <h1 id="contact">contact.</h1>
 <!-- 連絡先 -->
 <p>T. +39 339 52 40 867   |   mads@madsgallery.art</p>
@@ -155,21 +155,7 @@ Corso San Gottardo 18, 20136 Milan, Italy - Fuerteventura, Canary Islands, Spain
 <br>
 <br>
 </p>
-=======
-<div id="contact">
-    <h1>contact.</h1>
-    <!-- 連絡先 -->
-    <p>T. +39 339 52 40 867   |   mads@madsgallery.art</p>
-    <!-- 説明文と住所 -->
-    <p>
-    Guests are received by appointment only, please write us by mail or use the form below specifying the reasons for the request<br>
-    <br>
-    Events Locations<br>
-    Corso San Gottardo 18, 20136 Milan, Italy - Fuerteventura, Canary Islands, Spain
-    <br>
-    <br>
-    </p>
->>>>>>> jooji
+
 
     <!-- お問合せフォーム -->
     <form method="post" action="">
