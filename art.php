@@ -43,7 +43,6 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
   &a_title='.$result_join_follow_art["a_title"].'
   &a_des='.$result_join_follow_art["a_des"].'
   &a_year='.$result_join_follow_art["a_year"].'
-
   "><img src="art_img/'.$result_join_follow_art["a_img"].'"></a></li>';
 }
 

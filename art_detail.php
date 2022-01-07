@@ -5,13 +5,19 @@
 session_start(); 
 include("funcs.php");
 
+
+// art.phpからの取得
 $a_img=$_GET["a_img"];
 $a_title=$_GET["a_title"];
 $a_des=$_GET["a_des"];
 $a_year=$_GET["a_year"];
 $art_id=$_GET["a_id"];
 
-// var_dump($a_img);
+// art_detail.phpからart_id(a_id)の取得
+$a_comment_id=$_GET["a_comment_id"];
+
+
+// var_dump($a_comment_id);
 // exit();
 
 // DB 接続
@@ -47,14 +53,12 @@ if($_SESSION["u_img"] == null){
 
 
 // コメント処理----------
-    // 定義
-    $art_id = $_SESSION["art_id"]; // 仮
 
     // データ抽出
     $stmt_comment = $pdo->prepare('SELECT * FROM comment_table WHERE art_id=:art_id ORDER BY indate DESC');
-    $stmt_comment->bindValue(':art_id', $art_id, PDO::PARAM_INT); 
+    $stmt_comment->bindValue(':art_id', $a_comment_id, PDO::PARAM_INT); 
     $status_comment = $stmt_comment->execute();
-    // $result_comment = $stmt_comment->fetchAll(PDO::FETCH_ASSOC);
+    $result_comment = $stmt_comment->fetchAll(PDO::FETCH_ASSOC);
     // var_dump($result_comment); // OK
     // exit();
 
@@ -65,6 +69,19 @@ if($_SESSION["u_img"] == null){
         $view_comment .= '</div>';
     }
  
+//    var_dump($view_comment); // OK
+//     exit();
+
+// アート作品処理----------
+
+    // データ抽出
+    $stmt_art = $pdo->prepare('SELECT * FROM art_table WHERE id=:art_id');
+    $stmt_art->bindValue(':art_id', $art_id, PDO::PARAM_INT); 
+    $status_art = $stmt_art->execute();
+    $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
+    // var_dump($result_art["a_img"]); // OK
+    // exit();
+    
 
 
 ?>
@@ -131,12 +148,12 @@ if($_SESSION["u_img"] == null){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- アートのタイトル（データベースから表示） -->
-<p>Artworks/<?=$a_title?></p>
+<p>Artworks/<?=$result_art["a_title"]?></p>
 
 <div>
     <!-- 選択されたアートの画像 （データベースから表示）-->
         <div>
-        <img src="art_img\<?=$a_img?>" alt="" width="600">
+        <img src="art_img\<?=$result_art["a_img"]?>" alt="" width="600">
         </div>
 
     <!-- いいねボタン -->
@@ -148,7 +165,7 @@ if($_SESSION["u_img"] == null){
         </div>
 
     <!-- コメント入力欄 -->
-        <form method="post" action="art_detail_comment.php">
+        <form method="post" action="art_detail_comment.php?a_id=<?=$art_id?>">
             <div>
                 <textarea name="comment" id="" cols="30" rows="10" placeholder="コメントを入力"></textarea>
             </div>
@@ -167,17 +184,17 @@ if($_SESSION["u_img"] == null){
 <div>
     <!-- データベースから表示 -->
     <p>Title</p>
-    <p><?=$a_title?></p>
+    <p><?=$result_art["a_title"]?></p>
 </div>
 <div>
     <!-- データベースから表示 -->
     <p>Year</p>
-    <p><?=$a_year?></p>
+    <p><?=$result_art["a_year"]?></p>
 </div>
 <div>
     <!-- データベースから表示 -->
     <p> Description</p>
-    <p><?=$a_des?></p>
+    <p><?=$result_art["a_des"]?></p>
 </div>
 
 

@@ -1,5 +1,5 @@
 <?php
-// session_start(); //session id とれたらここをオープン
+session_start(); //session id とれたらここをオープン
 include("funcs.php");
 
 // DB 接続
@@ -7,11 +7,17 @@ $pdo = db_conn();
 
 // コメントの値を取得
 $comment = $_POST["comment"]; 
+$art_id =$_GET["a_id"];
+
 
 
 // テスト
-$user_id = 1; // 仮
-$art_id = 2; // 仮
+$user_id = $_SESSION["id"]; // 仮
+// $art_id = 2; // 仮
+// var_dump($art_id);
+// var_dump($comment);
+// var_dump($user_id);
+// exit();
 
 // データ登録
 $stmt = $pdo->prepare("INSERT INTO comment_table(id, comment, user_id, art_id, indate)
@@ -31,7 +37,7 @@ if($status == false){
     exit("QueryError:".$error[2]);
 }else{
 
-    header("Location: art_detail.php");
+    header("Location: art_detail.php?a_comment_id=$art_id");
     exit;
 }
 
