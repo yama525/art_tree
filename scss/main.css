@@ -5,6 +5,7 @@ body {
 
 body h1 {
   font-size: 85px;
+  margin-top: 20px;
 }
 
 body h2 {
@@ -32,6 +33,11 @@ body img {
 
 body .japanese {
   font-family: 'Noto Sans JP', sans-serif;
+}
+
+body .main_guide_text {
+  margin: 30px 0px 15px 0px;
+  color: #7a7a7a;
 }
 
 /*! sanitize.css v3.2.0 | CC0 1.0 Public Domain | github.com/10up/sanitize.css */
@@ -431,7 +437,7 @@ footer p {
   padding: 10px 25px;
   cursor: pointer;
   border-radius: 2px;
-  margin: 20px 8px;
+  margin: 20px 8px 5px;
   color: white;
 }
 
@@ -451,6 +457,51 @@ footer p {
   background-color: #575757;
 }
 
+.follow_btn {
+  margin: 20px 0 4px 0;
+  border-radius: 20px;
+  padding: 4px 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.follow {
+  background-color: #A71286;
+}
+
+.follow_cancel {
+  background-color: #b9b9b9;
+}
+
+/* モーダル本体 */
+/* （編集ボタンを押した時、表示される） */
+.my_modal {
+  width: 40%;
+  border-radius: 5px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  z-index: 7;
+  padding: 10px 20px;
+  position: absolute;
+  top: 92%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* 外側の暗い所 */
+.modal-overlay {
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
 .imglist {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -458,6 +509,8 @@ footer p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .imglist img {
@@ -468,8 +521,18 @@ footer p {
      object-fit: cover;
 }
 
+.imglist_wrap {
+  width: 100%;
+}
+
 .like_icon {
-  width: 45px;
+  width: 26px;
+  margin: 8px;
+}
+
+.about {
+  width: 90%;
+  margin: 0 auto;
 }
 
 .about__siteTitle1 {
@@ -479,6 +542,35 @@ footer p {
 
 .about__siteTitle2 {
   font-size: 24px;
+}
+
+.contact_form {
+  border: 0.1px solid #dfdfdf;
+  border-radius: 2px;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+  width: 270px;
+  /* 選択時 */
+}
+
+.contact_form:focus {
+  border: 2px solid #A71286;
+  outline: 0;
+}
+
+.contact_form_textarea {
+  border: 0.1px solid #dfdfdf;
+  border-radius: 2px;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+  width: 360px;
+  margin-top: 6px;
+  /* 選択時 */
+}
+
+.contact_form_textarea:focus {
+  border: 2px solid #A71286;
+  outline: 0;
 }
 
 .subtitle {
@@ -497,6 +589,7 @@ footer p {
   border: 0.1px solid #dfdfdf;
   border-radius: 2px;
   font-weight: bold;
+  padding: 4px 12px;
   /* 選択時 */
 }
 
@@ -517,6 +610,17 @@ footer p {
 .profile_textarea:focus {
   border: 2px solid #A71286;
   outline: 0;
+}
+
+.profile__follow_followers {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.profile__follow_followers__btn {
+  margin: 6px 16px;
+  cursor: pointer;
 }
 
 .profile__name {
@@ -546,6 +650,52 @@ footer p {
 .user_des {
   width: 500px;
   margin: 0 auto;
+  margin-top: 12px;
+}
+
+.my_modal__title {
+  margin: 0 auto;
+  margin-bottom: 12px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.my_modal__title p {
+  font-size: 26px;
+  padding: 4px 24px;
+}
+
+.my_modal__title__follow {
+  border-bottom: 2px solid #afafaf;
+}
+
+.my_modal__title__follower {
+  border-bottom: 2px solid #afafaf;
+}
+
+.my_modal__artists {
+  text-align: left;
+  font-size: 20px;
+  margin-left: 40px;
+}
+
+.my_modal__artists tr {
+  height: 50px;
+}
+
+.my_modal__img {
+  text-align: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.my_modal__text {
+  margin-left: 20px;
 }
 
 .register {
@@ -564,5 +714,34 @@ footer p {
 .register__input {
   font-size: 16px;
   width: 100%;
+}
+
+.explain {
+  color: #6d6d6d;
+  margin-top: 10px;
+}
+
+.font22 {
+  font-size: 22px;
+}
+
+.art_register_img {
+  width: 400px;
+  margin-bottom: 14px;
+  margin-top: 40px;
+}
+
+.art_register_input {
+  border: 0.1px solid #dfdfdf;
+  border-radius: 2px;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+  width: 270px;
+  /* 選択時 */
+}
+
+.art_register_input:focus {
+  border: 2px solid #A71286;
+  outline: 0;
 }
 /*# sourceMappingURL=main.css.map */

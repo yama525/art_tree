@@ -59,13 +59,60 @@ $stmt_art = $pdo->prepare('SELECT * FROM user_table inner join art_table on (use
 $stmt_art->bindValue(':id', $artist_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
 $status_art = $stmt_art->execute();
 
-
-
 $arts="";
 // $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
   while( $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){ 
     $arts .= '<li><img src="art_img/'.$result_art["a_img"].'" width="200"></li>';
   }
+
+
+
+
+// フォロー、フォロワー関係＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  // follow_table からこの人がフォローしているアーティスト数を取得
+  $stmt_followee = $pdo->prepare('SELECT COUNT(*) FROM follow_table WHERE followee_id=:followee_id;');
+  $stmt_followee->bindValue(':followee_id', $artist_id, PDO::PARAM_INT); 
+  $status_followee = $stmt_followee->execute();
+  $result_followee = $stmt_followee->fetch(PDO::FETCH_ASSOC);
+
+
+  // follow_table からこの人がフォローされている人数を取得
+  $stmt_followed = $pdo->prepare('SELECT COUNT(*) FROM follow_table WHERE followed_id=:followed_id;');
+  $stmt_followed->bindValue(':followed_id', $artist_id, PDO::PARAM_INT); 
+  $status_followed = $stmt_followed->execute();
+  $result_followed = $stmt_followed->fetch(PDO::FETCH_ASSOC);
+
+
+  // inner join で follow_table と user_table を接続。自分がフォローしている人を取得
+    $stmt_join_follow_art = $pdo->prepare(" SELECT * FROM user_table AS U_T
+    INNER JOIN follow_table AS F_T ON F_T.followed_id = U_T.id
+    WHERE F_T.followee_id = :followee_id");
+    $stmt_join_follow_art->bindValue(':followee_id', $artist_id, PDO::PARAM_STR);
+    $status_join_follow_art = $stmt_join_follow_art->execute();
+
+    $view_join_follow_art = "";
+    while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
+      $view_join_follow_art .= '<tr>';
+      $view_join_follow_art .= '<td><a href=""><img class="my_modal__img" src="artist_img/'.$result_join_follow_art["u_img"].'" alt=""></a></td>';
+      $view_join_follow_art .= '<td><a href="" class="my_modal__text">'.$result_join_follow_art["u_name"].'</a></td>';
+      $view_join_follow_art .= '</tr>';
+    }
+
+
+  // inner join で follow_table と user_table を接続。自分をフォローしている人を取得
+    $stmt_join_follower_art = $pdo->prepare(" SELECT * FROM user_table AS U_T
+    INNER JOIN follow_table AS F_T ON F_T.followee_id = U_T.id
+    WHERE F_T.followed_id = :followed_id");
+    $stmt_join_follower_art->bindValue(':followed_id', $artist_id, PDO::PARAM_STR);
+    $status_join_follower_art = $stmt_join_follower_art->execute();
+
+    $view_join_follower_art = "";
+    while($result_join_follower_art = $stmt_join_follower_art->fetch(PDO::FETCH_ASSOC)){
+      $view_join_follower_art .= '<tr>';
+      $view_join_follower_art .= '<td><a href=""><img class="my_modal__img" src="artist_img/'.$result_join_follower_art["u_img"].'" alt=""></a></td>';
+      $view_join_follower_art .= '<td><a href="" class="my_modal__text">'.$result_join_follower_art["u_name"].'</a></td>';
+      $view_join_follower_art .= '</tr>';
+    }
 
 ?>
 
@@ -77,7 +124,11 @@ $arts="";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <title>Artist Detail</title>
 </head>
 
 
@@ -131,10 +182,10 @@ $arts="";
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- アーティスト名（データベースから表示） -->
-<p>Artworks/<?= $result_user["u_name"] ?></p>
+<p class="main_guide_text">Artworks/<?= $result_user["u_name"] ?></p>
 
 <!-- 選択されたアーティストの画像 （データベースから表示）-->
-<img src="artist_img/<?=$result_user["u_img"] ?>" width="600" height="600">
+<img class="profile_img" src="artist_img/<?=$result_user["u_img"] ?>" width="600" height="600">
 
 
 
@@ -146,14 +197,60 @@ $arts="";
         <button class="follow_cancel follow_btn" style="display:none">フォロー中</button>
     </div>
 
+<!-- フォロー、フォロワー -->
+<div class="profile__follow_followers">
+      <p id="follow" class="profile__follow_followers__btn" href=""><?= $result_followee["COUNT(*)"] ?> Follow</p>
+      <p id="follower" class="profile__follow_followers__btn" href=""><?= $result_followed["COUNT(*)"] ?> Follower</p>
+    </div>
+    <!-- フォロークリック時のモーダル -->
+      <div class="modal modal_follow" style="display:none">
+          <!-- モーダルの外側の暗い所 -->
+              <div class="modal-overlay close_modal"></div>
+          <!-- モーダルの本体 -->
+              <div class="my_modal">
+                <!-- フォロー、フォロワーの切り替え -->
+                <div class="my_modal__title">
+                  <p class="my_modal__title__follow">Follow</p>
+                  <p>Follower</p>
+                </div>
+                <!-- <hr> -->
+                <!-- Follow ユーザー -->
+                  <table class="my_modal__artists">
+                    <?= $view_join_follow_art ?>
+                  </table>
+              </div>
+      </div>
 
-<!-- アーティストの名前 （データベースから表示）-->
-<h2><?= $result_user["u_name"] ?></h2>
-<!-- アーティストの自己紹介 （データベースから表示）-->
-<p><?= $result_user["u_des"] ?></p>
+    <!-- フォロワークリック時のモーダル -->
+      <div class="modal modal_follower" style="display:none">
+          <!-- モーダルの外側の暗い所 -->
+              <div class="modal-overlay close_modal"></div>
+          <!-- モーダルの本体 -->
+              <div class="my_modal">
+                <!-- フォロー、フォロワーの切り替え -->
+                <div class="my_modal__title">
+                  <p>Follow</p>
+                  <p class="my_modal__title__follower">Follower</p>
+                </div>
+                <!-- <hr> -->
+                <!-- Follow ユーザー -->
+                  <table class="my_modal__artists">
+                    <?= $view_join_follower_art ?>
+                  </table>
+              </div>
+      </div>
+
+<!-- アーティストの名前 -->
+<div class="profile__name">
+      <p class="japanese"><?= $result_user["u_name"] ?></p>
+    </div>
+<!-- アーティストの自己紹介-->
+<div class="user_des">
+      <p class="japanese"><?= $result_user["u_des"] ?></p>
+    </div>
 
 <!-- 作品集 -->
-<h2>Artworks</h2>
+<h2 class="subtitle">Artworks</h2>
 <ul class="imglist">
     <!-- <li>
         <img src="https://placehold.jp/c4c4c4/ffffff/237x237.png?text=イメージ" alt="">
@@ -271,6 +368,22 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
             $(".follow").hide();
         }
       
+
+// ーーーーーーーーーー 編集時の自作モーダル（modal）関係の動き ーーーーーーーーーー
+    // Followボタンを押した後、モーダルを表示させる
+    $("#follow").on("click", function () {
+            $(".modal_follow").fadeIn("slow");
+        });
+
+    // Followerボタンを押した後、モーダルを表示させる
+    $("#follower").on("click", function () {
+        $(".modal_follower").fadeIn("slow");
+    });
+    
+    // 外枠を押したときモーダルを消す処理
+        $(".close_modal").on("click", function () {
+            $(".modal").fadeOut("slow");
+        });
 
 
 </script>

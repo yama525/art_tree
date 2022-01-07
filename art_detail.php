@@ -18,6 +18,7 @@ $a_comment_id=$_GET["a_comment_id"];
 
 
 // var_dump($a_comment_id);
+
 // exit();
 
 // DB 接続
@@ -38,7 +39,7 @@ if($_SESSION["u_img"] == null){
     // $art_id = $art_id; //session id とれたらここをオープン
     // $user_id = 1; // テスト。本番は↑
     // $art_id = 2; // テスト。本番は↑
-    // var_dump($art_id);
+    // var_dump($user_id);
     // exit();
 
     // データ抽出
@@ -53,6 +54,7 @@ if($_SESSION["u_img"] == null){
 
 
 // コメント処理----------
+
 
     // データ抽出
     $stmt_comment = $pdo->prepare('SELECT * FROM comment_table WHERE art_id=:art_id ORDER BY indate DESC');
@@ -108,7 +110,6 @@ if($_SESSION["u_img"] == null){
 <div class="header_space">
     <?= $view_profile_icon ?>
 </div>
-
 <!-- ロゴ -->
 <img class="logo" src="other_img/logo.png" alt="">
 <!-- ロゴの下の文章 -->
@@ -148,14 +149,13 @@ if($_SESSION["u_img"] == null){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- アートのタイトル（データベースから表示） -->
-<p>Artworks/<?=$result_art["a_title"]?></p>
 
+<p  class="main_guide_text">Artworks/<?=$a_title?></p>
 <div>
     <!-- 選択されたアートの画像 （データベースから表示）-->
         <div>
         <img src="art_img\<?=$result_art["a_img"]?>" alt="" width="600">
         </div>
-
     <!-- いいねボタン -->
         <div>
             <!-- いいねボタン -->
@@ -167,11 +167,11 @@ if($_SESSION["u_img"] == null){
     <!-- コメント入力欄 -->
         <form method="post" action="art_detail_comment.php?a_id=<?=$art_id?>">
             <div>
-                <textarea name="comment" id="" cols="30" rows="10" placeholder="コメントを入力"></textarea>
+                <textarea class="contact_form_textarea" name="comment" id="" cols="30" rows="10" placeholder="Add Comment"></textarea>
             </div>
     <!-- コメント投稿ボタン -->
             <div>
-                <input type="submit" class="post_comment" value="投稿">
+                <input type="submit" class="post_comment btn_positive btn" value="投稿">
             </div>
         </form>
 
@@ -183,18 +183,18 @@ if($_SESSION["u_img"] == null){
 
 <div>
     <!-- データベースから表示 -->
-    <p>Title</p>
-    <p><?=$result_art["a_title"]?></p>
+    <p class="explain">Title</p>
+    <p class="japanese font22"><?=$a_title?></p>
 </div>
 <div>
     <!-- データベースから表示 -->
-    <p>Year</p>
-    <p><?=$result_art["a_year"]?></p>
+    <p  class="explain">Year</p>
+    <p class="japanese"><?=$a_year?></p>
 </div>
 <div>
     <!-- データベースから表示 -->
-    <p> Description</p>
-    <p><?=$result_art["a_des"]?></p>
+    <p  class="explain"> Description</p>
+    <p class="japanese" style="margin-bottom:50px"><?=$a_des?></p>
 </div>
 
 
@@ -225,9 +225,6 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
 
 </footer>
 
-
-
-
 <!-- ======================================================================================== -->
 <!-- =========================================script========================================= -->
 <!-- ======================================================================================== -->
@@ -250,7 +247,7 @@ M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
                 $(".like").show();
             });
 
-
+            
 
     // user_id > 1
     // art_id > 2 と仮定→params.appendの箇所を修正する！

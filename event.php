@@ -27,7 +27,8 @@ if($_SESSION["u_img"] == null){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-    <title>Document</title>
+    
+    <title>Event</title>
 </head>
 <body>
 
@@ -79,8 +80,8 @@ if($_SESSION["u_img"] == null){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- 検索バー -->
-<p>Events/All</p>
-<input type="text" placeholder="Search events...">
+<p class="main_guide_text">Events/All</p>
+<!-- <input type="text" placeholder="Search events..."> -->
 
 
 <!-- イベント一覧画面 （とりあえず５枚）-->
@@ -100,8 +101,7 @@ if($_SESSION["u_img"] == null){
 
 </ul>
 
-<!-- もっと見るボタン -->
-<button>Lead More</button>
+
 
 
 

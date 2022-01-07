@@ -23,7 +23,7 @@ if($_SESSION["u_img"] == null){
 
 
 
-$user_id = $_SESSION["id"]; // 本番はこちら
+$user_id = $_SESSION["id"]; // 
 // user_table からのデータ抽出
 $stmt_user = $pdo->prepare('SELECT * FROM user_table WHERE id=:id');
 $stmt_user->bindValue(':id', $user_id, PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
@@ -32,23 +32,65 @@ $status_user = $stmt_user->execute();
 $result_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 
 
-// art_table からのデータ抽出
+// art_table からの自分のid のデータ抽出
 $view_user_art = "";
 $stmt_art = $pdo->prepare('SELECT * FROM art_table WHERE user_id=:user_id');
 $stmt_art->bindValue(':user_id', $_SESSION["id"], PDO::PARAM_INT); //$id の箇所はセッションID でログイン時から持っておく
 $status_art = $stmt_art->execute();
 
-
-
 while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
-  
     $view_user_art .= '<li>';
     $view_user_art .= '<a href="art_detail.php?id='.$result_art["id"].'"><img src="art_img/'.$result_art["a_img"].'"></a>';
     $view_user_art .= '</li>';
-
 }
 
 
+
+// フォロー、フォロワー関係＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  // follow_table から自分がフォローしているアーティスト数を取得
+  $stmt_followee = $pdo->prepare('SELECT COUNT(*) FROM follow_table WHERE followee_id=:followee_id;');
+  $stmt_followee->bindValue(':followee_id', $user_id, PDO::PARAM_INT); 
+  $status_followee = $stmt_followee->execute();
+  $result_followee = $stmt_followee->fetch(PDO::FETCH_ASSOC);
+
+
+  // follow_table から自分がフォローされているアーティスト数を取得
+  $stmt_followed = $pdo->prepare('SELECT COUNT(*) FROM follow_table WHERE followed_id=:followed_id;');
+  $stmt_followed->bindValue(':followed_id', $user_id, PDO::PARAM_INT); 
+  $status_followed = $stmt_followed->execute();
+  $result_followed = $stmt_followed->fetch(PDO::FETCH_ASSOC);
+
+
+  // inner join で follow_table と user_table を接続。自分がフォローしている人を取得
+    $stmt_join_follow_art = $pdo->prepare(" SELECT * FROM user_table AS U_T
+    INNER JOIN follow_table AS F_T ON F_T.followed_id = U_T.id
+    WHERE F_T.followee_id = :followee_id");
+    $stmt_join_follow_art->bindValue(':followee_id', $_SESSION["id"], PDO::PARAM_STR);
+    $status_join_follow_art = $stmt_join_follow_art->execute();
+
+    $view_join_follow_art = "";
+    while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
+      $view_join_follow_art .= '<tr>';
+      $view_join_follow_art .= '<td><a href=""><img class="my_modal__img" src="artist_img/'.$result_join_follow_art["u_img"].'" alt=""></a></td>';
+      $view_join_follow_art .= '<td><a href="" class="my_modal__text">'.$result_join_follow_art["u_name"].'</a></td>';
+      $view_join_follow_art .= '</tr>';
+    }
+
+
+  // inner join で follow_table と user_table を接続。自分をフォローしている人を取得
+    $stmt_join_follower_art = $pdo->prepare(" SELECT * FROM user_table AS U_T
+    INNER JOIN follow_table AS F_T ON F_T.followee_id = U_T.id
+    WHERE F_T.followed_id = :followed_id");
+    $stmt_join_follower_art->bindValue(':followed_id', $_SESSION["id"], PDO::PARAM_STR);
+    $status_join_follower_art = $stmt_join_follower_art->execute();
+
+    $view_join_follower_art = "";
+    while($result_join_follower_art = $stmt_join_follower_art->fetch(PDO::FETCH_ASSOC)){
+      $view_join_follower_art .= '<tr>';
+      $view_join_follower_art .= '<td><a href=""><img class="my_modal__img" src="artist_img/'.$result_join_follower_art["u_img"].'" alt=""></a></td>';
+      $view_join_follower_art .= '<td><a href="" class="my_modal__text">'.$result_join_follower_art["u_name"].'</a></td>';
+      $view_join_follower_art .= '</tr>';
+    }
 
 ?>
 
@@ -64,9 +106,8 @@ while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>My Profile</title>
 </head>
 <body>
 
@@ -125,17 +166,61 @@ while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
 
 <!-- プロフィール -->
 <div class="profile">
-  <div>
-    <?= $view ?>
-  </div>
-  <div class="profile__name">
-    <p class="japanese"><?= $result_user["u_name"] ?></p>
-    <img class="edit_start_btn" src="other_img/pen.png" alt="">
-  </div>
-  <br>
-  <div class="user_des">
-    <p class="japanese"><?= $result_user["u_des"] ?></p>
-  </div>
+  <!-- プロフィール写真 -->
+    <div>
+      <?= $view ?>
+    </div>
+  <!-- フォロー、フォロワー -->
+    <div class="profile__follow_followers">
+      <p id="follow" class="profile__follow_followers__btn" href=""><?= $result_followee["COUNT(*)"] ?> Follow</p>
+      <p id="follower" class="profile__follow_followers__btn" href=""><?= $result_followed["COUNT(*)"] ?> Follower</p>
+    </div>
+    <!-- フォロークリック時のモーダル -->
+      <div class="modal modal_follow" style="display:none">
+          <!-- モーダルの外側の暗い所 -->
+              <div class="modal-overlay close_modal"></div>
+          <!-- モーダルの本体 -->
+              <div class="my_modal">
+                <!-- フォロー、フォロワーの切り替え -->
+                <div class="my_modal__title">
+                  <p class="my_modal__title__follow">Follow</p>
+                  <p>Follower</p>
+                </div>
+                <!-- <hr> -->
+                <!-- Follow ユーザー -->
+                  <table class="my_modal__artists">
+                    <?= $view_join_follow_art ?>
+                  </table>
+              </div>
+      </div>
+
+    <!-- フォロワークリック時のモーダル -->
+      <div class="modal modal_follower" style="display:none">
+          <!-- モーダルの外側の暗い所 -->
+              <div class="modal-overlay close_modal"></div>
+          <!-- モーダルの本体 -->
+              <div class="my_modal">
+                <!-- フォロー、フォロワーの切り替え -->
+                <div class="my_modal__title">
+                  <p>Follow</p>
+                  <p class="my_modal__title__follower">Follower</p>
+                </div>
+                <!-- <hr> -->
+                <!-- Follow ユーザー -->
+                  <table class="my_modal__artists">
+                    <?= $view_join_follower_art ?>
+                  </table>
+              </div>
+      </div>
+  <!-- プロフィール名 -->
+    <div class="profile__name">
+      <p class="japanese"><?= $result_user["u_name"] ?></p>
+      <img class="edit_start_btn" src="other_img/pen.png" alt="">
+    </div>
+  <!-- ユーザー自己紹介 -->
+    <div class="user_des">
+      <p class="japanese"><?= $result_user["u_des"] ?></p>
+    </div>
 </div>
 
 <!-- プロフィール編集中のみ表示 -->
@@ -164,10 +249,11 @@ while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
 
 <!-- 自分の作品集 -->
 <h2 class="subtitle">Artworks</h2>
-<ul class="imglist">
-    <?= $view_user_art ?>
-</ul>
-    
+<div class="imglist_wrap">
+  <ul class="imglist">
+      <?= $view_user_art ?>
+  </ul>
+</div>
   
 
 </main>
@@ -234,13 +320,22 @@ while($result_art = $stmt_art->fetch(PDO::FETCH_ASSOC)){
   });
 
 
+// ーーーーーーーーーー 編集時の自作モーダル（modal）関係の動き ーーーーーーーーーー
+    // Followボタンを押した後、モーダルを表示させる
+    $("#follow").on("click", function () {
+            $(".modal_follow").fadeIn("slow");
+        });
 
-// //  ーーーーーーー 画像が選択されていない時のアラート ーーーーーーー
-//   $(".btn__positive").on("click", function () {
-//     if($("#file_upload").val() == ""){   // まずはクリックしたときに「$("#file_upload").val()」で val の値を取得。今回は空白だったので、 == "" とすることにより解消
-//       alert("ファイルが選択されていません");
-//     }  
-//   });
+    // Followerボタンを押した後、モーダルを表示させる
+    $("#follower").on("click", function () {
+        $(".modal_follower").fadeIn("slow");
+    });
+    
+    // 外枠を押したときモーダルを消す処理
+        $(".close_modal").on("click", function () {
+            $(".modal").fadeOut("slow");
+        });
+
 
 </script>
 

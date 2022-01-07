@@ -27,7 +27,11 @@ if($_SESSION["u_img"] == null){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <title>Press</title>
 </head>
 <body>
 
@@ -79,8 +83,8 @@ if($_SESSION["u_img"] == null){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- 検索バー -->
-<p>Press/All</p>
-<input type="text" placeholder="Search press...">
+<p class="main_guide_text">Press/All</p>
+<!-- <input type="text" placeholder="Search press..."> -->
 
 
 <!-- プレス一覧画面 （とりあえず５枚）-->
@@ -99,8 +103,7 @@ if($_SESSION["u_img"] == null){
     </li>
 </ul>
 
-<!-- もっと見るボタン -->
-<button>Lead More</button>
+
 
 
 

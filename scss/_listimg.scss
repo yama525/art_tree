@@ -1,12 +1,16 @@
 .imglist{
     display: flex;
     justify-content: center;
-    
+    flex-wrap: wrap;
     img{
         padding: 10px;
         width: 330px;
         height: 330px;
         object-fit: cover;
     }
+}
+
+.imglist_wrap{
+    width: 100%;
 }
 

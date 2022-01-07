@@ -16,7 +16,8 @@
     border: 0.1px solid #dfdfdf;
     border-radius:2px;
     font-weight: bold;
-/* 選択時 */
+    padding: 4px 12px;
+    /* 選択時 */
     &:focus { 
     border: 2px solid $main_color;
     outline: 0;
@@ -37,6 +38,14 @@
 }
 
 .profile{
+    &__follow_followers{
+        display: inline-flex;
+        &__btn{
+            margin: 6px 16px;
+            cursor: pointer;
+        }
+    }
+
     &__name{
         display: flex;
         justify-content: center;
@@ -57,4 +66,50 @@
 .user_des{
     width:500px;
     margin:0 auto;
+    margin-top: 12px;
 }
+
+.my_modal{
+    &__title{
+
+        margin: 0 auto;
+        margin-bottom: 12px;
+        display: inline-flex;
+        p{
+            font-size: 26px;
+            padding: 4px 24px;
+        }
+        &__follow{
+            border-bottom: 2px solid rgb(175, 175, 175);
+        }
+        &__follower{
+            border-bottom: 2px solid rgb(175, 175, 175);
+        }
+    }
+    &__artists{
+        text-align: left;
+        font-size: 20px;
+        margin-left: 40px;
+
+        tr{
+            height: 50px;
+        }
+    }
+    &__img{
+        text-align: left;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        cursor: pointer;
+        object-fit: cover;
+    }
+    &__text{
+        margin-left: 20px;
+    }
+}
+
+// hr{
+//     border-bottom:2px solid rgb(175, 175, 175); 
+//     width:60%;
+//     margin: 0 auto;
+// }

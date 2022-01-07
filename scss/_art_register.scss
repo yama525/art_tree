@@ -1,0 +1,20 @@
+@charset 'utf-8';
+
+.art_register_img{
+    width: 400px;
+    margin-bottom: 14px;
+    margin-top: 40px;
+}
+
+.art_register_input{
+    border: 0.1px solid #dfdfdf;
+    border-radius: 2px;
+    padding: 4px 12px;
+    margin-bottom: 8px;
+    width: 270px;
+    /* 選択時 */
+    &:focus { 
+        border: 2px solid $main_color;
+        outline: 0;
+    }
+}

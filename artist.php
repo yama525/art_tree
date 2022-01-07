@@ -39,7 +39,11 @@ if($status==false) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <title>Artists</title>
 </head>
 <body>
 
@@ -93,8 +97,8 @@ if($status==false) {
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- 検索バー -->
-<p>Artists/All</p>
-<input type="text" placeholder="Search artists...">
+<p class="main_guide_text">Artists/All</p>
+<!-- <input type="text" placeholder="Search artists..."> -->
 
 
 <!-- アーティスト一覧画面 （とりあえず５枚）-->
@@ -104,8 +108,6 @@ if($status==false) {
 
 </ul>
 
-<!-- もっと見るボタン -->
-<button>Lead More</button>
 
 
 

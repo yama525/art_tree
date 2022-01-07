@@ -13,6 +13,7 @@ if($_SESSION["u_img"] == null){
     $view_profile_icon = '<a href="profile.php"><img class="header_space__img" src="artist_img/'.$_SESSION["u_img"].'" alt="プロフィール画像"></a>';
 }
 
+
 // inner join で follow_table と user_table を接続
 $stmt_join_follow_art = $pdo->prepare(" SELECT * FROM art_table AS A_T
 INNER JOIN follow_table AS F_T ON F_T.followed_id = A_T.user_id
@@ -35,7 +36,7 @@ $status_join_follow_art = $stmt_join_follow_art->execute();
 
 $view_join_follow_art = "";
 while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
-//   var_dump($result_join_follow_art);
+//   var_dump($result_join_follow_art["id"]);
 //   exit();
   $view_join_follow_art .= '<li><a href="art_detail.php
   ?a_id='.$result_join_follow_art["id"].'
@@ -43,7 +44,10 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
   &a_title='.$result_join_follow_art["a_title"].'
   &a_des='.$result_join_follow_art["a_des"].'
   &a_year='.$result_join_follow_art["a_year"].'
+
+
   "><img src="art_img/'.$result_join_follow_art["a_img"].'"></a></li>';
+
 }
 
 
@@ -59,7 +63,11 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/main.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <title>Arts</title>
 </head>
 <body>
 
@@ -70,6 +78,7 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 <header>
 <!-- ページ右上のプロフィール写真アイコン -->
 <div class="header_space">
+    <a href="art_register.php"><img class="header_space__img" src="other_img/plus_icon.png"></a>
     <?= $view_profile_icon ?>
 </div>
 
@@ -112,12 +121,13 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- 検索バー -->
-<p>Artworks/All</p>
-<input type="text" placeholder="Search artworks...">
+<p class="main_guide_text">Artworks/All</p>
+<!-- <input type="text" placeholder="Search artworks..."> -->
 
 
 <!-- アート一覧画面 （とりあえず５枚）-->
 <ul class="imglist">
+    
     <?=$view_join_follow_art?>
 
 </ul>
@@ -126,11 +136,6 @@ while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
     <div class="container jumbotron" id="view"><?=$view?></div>
 
 </div>
-
-<!-- もっと見るボタン -->
-<button>Lead More</button><br>
-
-<a href="art_register.php">アート登録</a>
 
 
 
