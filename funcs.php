@@ -15,10 +15,10 @@
             $db_pw   = "root";      //パスワード：XAMPPはパスワード無しに修正してください。
             $db_host = "localhost"; //DBホスト
         // さくらサーバー側
-            // $db_name = "未定";    //データベース名
-            // $db_id   = "未定";      //アカウント名
+            // $db_name = "nanca_cream_puff";    //データベース名
+            // $db_id   = "nanca";      //アカウント名
             // $db_pw   = "********";      //パスワード：XAMPPはパスワード無しに修正してください。
-            // $db_host = "未定.sakura.ne.jp"; //DBホスト
+            // $db_host = "mysql57.nanca.sakura.ne.jp"; //DBホスト
 
             return new PDO('mysql:dbname='.$db_name.';
             charset=utf8;host='.$db_host, $db_id, $db_pw);
