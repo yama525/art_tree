@@ -58,7 +58,7 @@ if($_SESSION["u_img"] == null){
 </div>
 
 <!-- ロゴ -->
-<img class="logo" src="other_img/logo.png" alt="">
+<a href="https://apt-jpn.sakura.ne.jp/art_restaurant/index.html"><img class="logo" src="other_img/logo.png" alt=""></a>
 <!-- ロゴの下の文章 -->
   <div class="logo_text">
     <p>ART TREE</p>
@@ -97,7 +97,8 @@ if($_SESSION["u_img"] == null){
 
 <main>
 <!-- サイトイメージ画像 -->
-<img src="art_img/cafe.jpeg" alt="" style="width: 980px; height: 450px; object-fit: cover; object-position: 50% 100%;">
+<!-- <img src="art_img/cafe.jpeg" alt="" style="width: 980px; height: 450px; object-fit: cover; object-position: 50% 100%;"> -->
+<img src="other_img/cafe.jpg" alt="" style="width: 80%; height: 450px; object-fit: cover; object-position: 50% 100%; margin-top:40px">
 
 <!-- ---------artworks の見出し--------- -->
 <div class="artworks">
