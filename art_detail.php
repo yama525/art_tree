@@ -5,14 +5,20 @@
 session_start(); 
 include("funcs.php");
 
+
+// art.phpからの取得
 $a_img=$_GET["a_img"];
 $a_title=$_GET["a_title"];
 $a_des=$_GET["a_des"];
 $a_year=$_GET["a_year"];
 $art_id=$_GET["a_id"];
 
-// echo $art_id; // OK
-// var_dump($art_id);
+// art_detail.phpからart_id(a_id)の取得
+$a_comment_id=$_GET["a_comment_id"];
+
+
+// var_dump($a_comment_id);
+
 // exit();
 
 // DB 接続
@@ -48,13 +54,13 @@ if($_SESSION["u_img"] == null){
 
 
 // コメント処理----------
-    
+
 
     // データ抽出
     $stmt_comment = $pdo->prepare('SELECT * FROM comment_table WHERE art_id=:art_id ORDER BY indate DESC');
-    $stmt_comment->bindValue(':art_id', $art_id, PDO::PARAM_INT); 
+    $stmt_comment->bindValue(':art_id', $a_comment_id, PDO::PARAM_INT); 
     $status_comment = $stmt_comment->execute();
-    // $result_comment = $stmt_comment->fetchAll(PDO::FETCH_ASSOC);
+    $result_comment = $stmt_comment->fetchAll(PDO::FETCH_ASSOC);
     // var_dump($result_comment); // OK
     // exit();
 
@@ -65,6 +71,19 @@ if($_SESSION["u_img"] == null){
         $view_comment .= '</div>';
     }
  
+//    var_dump($view_comment); // OK
+//     exit();
+
+// アート作品処理----------
+
+    // データ抽出
+    $stmt_art = $pdo->prepare('SELECT * FROM art_table WHERE id=:art_id');
+    $stmt_art->bindValue(':art_id', $art_id, PDO::PARAM_INT); 
+    $status_art = $stmt_art->execute();
+    $result_art = $stmt_art->fetch(PDO::FETCH_ASSOC);
+    // var_dump($result_art["a_img"]); // OK
+    // exit();
+    
 
 
 ?>
@@ -130,11 +149,12 @@ if($_SESSION["u_img"] == null){
 <!-- ------------------------------------------------------ -->
 <main>
 <!-- アートのタイトル（データベースから表示） -->
+
 <p  class="main_guide_text">Artworks/<?=$a_title?></p>
 <div>
     <!-- 選択されたアートの画像 （データベースから表示）-->
         <div>
-        <img src="art_img\<?=$a_img?>" alt="" width="600">
+        <img src="art_img\<?=$result_art["a_img"]?>" alt="" width="600">
         </div>
     <!-- いいねボタン -->
         <div>
@@ -145,7 +165,7 @@ if($_SESSION["u_img"] == null){
         </div>
 
     <!-- コメント入力欄 -->
-        <form method="post" action="art_detail_comment.php">
+        <form method="post" action="art_detail_comment.php?a_id=<?=$art_id?>">
             <div>
                 <textarea class="contact_form_textarea" name="comment" id="" cols="30" rows="10" placeholder="Add Comment"></textarea>
             </div>
@@ -161,21 +181,34 @@ if($_SESSION["u_img"] == null){
 </div>
 
 
-    <div>
-        <!-- データベースから表示 -->
-        <p class="explain">Title</p>
-        <p class="japanese font22"><?=$a_title?></p>
-    </div>
-    <div>
-        <!-- データベースから表示 -->
-        <p  class="explain">Year</p>
-        <p class="japanese"><?=$a_year?></p>
-    </div>
-    <div>
-        <!-- データベースから表示 -->
-        <p  class="explain"> Description</p>
-        <p class="japanese" style="margin-bottom:50px"><?=$a_des?></p>
-    </div>
+<div>
+    <!-- データベースから表示 -->
+    <p class="explain">Title</p>
+    <p class="japanese font22"><?=$a_title?></p>
+</div>
+<div>
+    <!-- データベースから表示 -->
+    <p  class="explain">Year</p>
+    <p class="japanese"><?=$a_year?></p>
+</div>
+<div>
+    <!-- データベースから表示 -->
+    <p  class="explain"> Description</p>
+    <p class="japanese" style="margin-bottom:50px"><?=$a_des?></p>
+</div>
+
+
+<!-- ---------会社情報など（全ページ共通）--------- -->
+<!-- 区切り線 -->
+<hr style="border:0;border-top:1px solid black;">
+
+<!-- 会社住所 -->
+<p>
+M.A.D.S. Art Gallery SL Unipersonal - C.I.F. B 05303862<br>
+38670 Adeje - Tenerife Islas - Spain
+</p>
+
+
 
 </main>
 

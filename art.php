@@ -38,11 +38,13 @@ $view_join_follow_art = "";
 while($result_join_follow_art = $stmt_join_follow_art->fetch(PDO::FETCH_ASSOC)){
 //   var_dump($result_join_follow_art["id"]);
 //   exit();
-  $view_join_follow_art .= '<li><a href="art_detail.php?a_id='.$result_join_follow_art["id"].'
-&a_img='.$result_join_follow_art["a_img"].'
-&a_title='.$result_join_follow_art["a_title"].'
-&a_des='.$result_join_follow_art["a_des"].'
-&a_year='.$result_join_follow_art["a_year"].'
+  $view_join_follow_art .= '<li><a href="art_detail.php
+  ?a_id='.$result_join_follow_art["id"].'
+  &a_img='.$result_join_follow_art["a_img"].'
+  &a_title='.$result_join_follow_art["a_title"].'
+  &a_des='.$result_join_follow_art["a_des"].'
+  &a_year='.$result_join_follow_art["a_year"].'
+
 
   "><img src="art_img/'.$result_join_follow_art["a_img"].'"></a></li>';
 
