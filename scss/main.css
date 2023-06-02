@@ -2,42 +2,34 @@
 body {
   text-align: center;
 }
-
 body h1 {
   font-size: 85px;
   margin-top: 20px;
 }
-
 body h2 {
   font-size: 32px;
-  font-family: 'PT Serif', serif;
+  font-family: "PT Serif", serif;
 }
-
 body p {
   font-size: 18px;
-  font-family: 'PT Serif', serif;
+  font-family: "PT Serif", serif;
 }
-
 body input {
-  font-family: 'PT Serif', serif;
+  font-family: "PT Serif", serif;
 }
-
 body a {
   cursor: pointer;
 }
-
 body img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-
 body .japanese {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
-
 body .main_guide_text {
   margin: 30px 0px 15px 0px;
-  color: #7a7a7a;
+  color: rgb(122, 122, 122);
 }
 
 /*! sanitize.css v3.2.0 | CC0 1.0 Public Domain | github.com/10up/sanitize.css */
@@ -45,97 +37,77 @@ body .main_guide_text {
  * Normalization
  */
 audio:not([controls]) {
-  display: none;
-  /* Chrome 44-, iOS 8+, Safari 9+ */
+  display: none; /* Chrome 44-, iOS 8+, Safari 9+ */
 }
 
 button {
-  -webkit-appearance: button;
-  /* iOS 8+ */
-  overflow: visible;
-  /* Internet Explorer 11- */
+  -webkit-appearance: button; /* iOS 8+ */
+  overflow: visible; /* Internet Explorer 11- */
 }
 
 details {
-  display: block;
-  /* Edge 12+, Firefox 40+, Internet Explorer 11-, Windows Phone 8.1+ */
+  display: block; /* Edge 12+, Firefox 40+, Internet Explorer 11-, Windows Phone 8.1+ */
 }
 
 html {
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  /* Edge 12+, Internet Explorer 11- */
-  overflow-y: scroll;
-  /* All browsers without overlaying scrollbars */
-  -webkit-text-size-adjust: 100%;
-  /* iOS 8+ */
+  -ms-overflow-style: -ms-autohiding-scrollbar; /* Edge 12+, Internet Explorer 11- */
+  overflow-y: scroll; /* All browsers without overlaying scrollbars */
+  -webkit-text-size-adjust: 100%; /* iOS 8+ */
 }
 
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  /* iOS 8+ */
+input[type=button],
+input[type=reset],
+input[type=submit] {
+  -webkit-appearance: button; /* iOS 8+ */
 }
 
-input[type="number"] {
-  width: auto;
-  /* Firefox 36+ */
+input[type=number] {
+  width: auto; /* Firefox 36+ */
 }
 
-input[type="search"] {
-  -webkit-appearance: textfield;
-  /* Chrome 45+, Safari 9+ */
+input[type=search] {
+  -webkit-appearance: textfield; /* Chrome 45+, Safari 9+ */
 }
 
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-  /* Chrome 45+, Safari 9+ */
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none; /* Chrome 45+, Safari 9+ */
 }
 
 main {
-  display: block;
-  /* Android 4.3-, Internet Explorer 11-, Windows Phone 8.1+ */
+  display: block; /* Android 4.3-, Internet Explorer 11-, Windows Phone 8.1+ */
 }
 
 pre {
-  overflow: auto;
-  /* Internet Explorer 11- */
+  overflow: auto; /* Internet Explorer 11- */
 }
 
 progress {
-  display: inline-block;
-  /* Internet Explorer 11-, Windows Phone 8.1+ */
+  display: inline-block; /* Internet Explorer 11-, Windows Phone 8.1+ */
 }
 
 small {
-  font-size: 75%;
-  /* All browsers */
+  font-size: 75%; /* All browsers */
 }
 
 summary {
-  display: block;
-  /* Firefox 40+, Internet Explorer 11-, Windows Phone 8.1+ */
+  display: block; /* Firefox 40+, Internet Explorer 11-, Windows Phone 8.1+ */
 }
 
 svg:not(:root) {
-  overflow: hidden;
-  /* Internet Explorer 11- */
+  overflow: hidden; /* Internet Explorer 11- */
 }
 
 template {
-  display: none;
-  /* Android 4.3-, Internet Explorer 11-, iOS 7-, Safari 7-, Windows Phone 8.1+ */
+  display: none; /* Android 4.3-, Internet Explorer 11-, iOS 7-, Safari 7-, Windows Phone 8.1+ */
 }
 
 textarea {
-  overflow: auto;
-  /* Edge 12+, Internet Explorer 11- */
+  overflow: auto; /* Edge 12+, Internet Explorer 11- */
 }
 
 [hidden] {
-  display: none;
-  /* Internet Explorer 10- */
+  display: none; /* Internet Explorer 10- */
 }
 
 /*
@@ -144,8 +116,7 @@ textarea {
 *,
 :before,
 :after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 * {
@@ -180,8 +151,7 @@ textarea {
 /* specify the root styles of the document */
 :root {
   background-color: #ffffff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #000000;
   cursor: default;
   font: 100%/1.5 sans-serif;
@@ -223,22 +193,22 @@ textarea {
 
 /* specify the minimum height of form elements */
 button,
-[type="button"],
-[type="date"],
-[type="datetime"],
-[type="datetime-local"],
-[type="email"],
-[type="month"],
-[type="number"],
-[type="password"],
-[type="reset"],
-[type="search"],
-[type="submit"],
-[type="tel"],
-[type="text"],
-[type="time"],
-[type="url"],
-[type="week"],
+[type=button],
+[type=date],
+[type=datetime],
+[type=datetime-local],
+[type=email],
+[type=month],
+[type=number],
+[type=password],
+[type=reset],
+[type=search],
+[type=submit],
+[type=tel],
+[type=text],
+[type=time],
+[type=url],
+[type=week],
 select,
 textarea {
   min-height: 1.5em;
@@ -260,19 +230,16 @@ nav ul {
 
 /* specify the standard appearance of selects */
 select {
-  -moz-appearance: none;
-  /* Firefox 40+ */
+  -moz-appearance: none; /* Firefox 40+ */
   -webkit-appearance: none;
 }
 
 select::-ms-expand {
-  display: none;
-  /* Edge 12+, Internet Explorer 11- */
+  display: none; /* Edge 12+, Internet Explorer 11- */
 }
 
 select::-ms-value {
-  color: currentColor;
-  /* Edge 12+, Internet Explorer 11- */
+  color: currentColor; /* Edge 12+, Internet Explorer 11- */
 }
 
 /* specify the border styling of tables */
@@ -288,21 +255,19 @@ textarea {
 
 /* specify the background color, font color, and drop shadow of text selections */
 ::-moz-selection {
-  background-color: #b3d4fc;
-  /* required when declaring ::selection */
+  background-color: #b3d4fc; /* required when declaring ::selection */
   color: #ffffff;
   text-shadow: none;
 }
 
 ::selection {
-  background-color: #b3d4fc;
-  /* required when declaring ::selection */
+  background-color: #b3d4fc; /* required when declaring ::selection */
   color: #ffffff;
   text-shadow: none;
 }
 
 /* specify the progress cursor of updating elements */
-[aria-busy="true"] {
+[aria-busy=true] {
   cursor: progress;
 }
 
@@ -317,13 +282,13 @@ textarea {
 }
 
 /* specify the style of visually hidden yet accessible elements */
-[hidden][aria-hidden="false"] {
+[hidden][aria-hidden=false] {
   clip: rect(0 0 0 0);
   display: inherit;
   position: absolute;
 }
 
-[hidden][aria-hidden="false"]:focus {
+[hidden][aria-hidden=false]:focus {
   clip: auto;
 }
 
@@ -336,17 +301,17 @@ label,
 select,
 textarea,
 [tabindex] {
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
+
+
 :root, html, body {
   background-color: #fff;
   width: 100%;
 }
 
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 li {
@@ -364,40 +329,31 @@ a {
 header ul {
   font-size: 36px;
   color: #000;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  font-family: Georgia, "Times New Roman", Times, serif;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   margin-left: 12%;
   margin-right: 12%;
 }
-
 header p {
   font-size: 24px;
 }
-
 header hr {
   border-top: 1px solid black;
   width: 450px;
   margin: 0 auto;
 }
-
 header .logo {
   width: 290px;
 }
-
 header .logo_text {
   margin-top: 34px;
   margin-bottom: 58px;
 }
-
 header .header_space {
   height: 50px;
   text-align: right;
 }
-
 header .header_space__img {
   width: 55px;
   height: 55px;
@@ -409,14 +365,12 @@ header .header_space__img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-
 header .header_space__text {
   position: relative;
   top: 10px;
   left: -24px;
   cursor: pointer;
 }
-
 header .header_text {
   font-size: 18px;
   color: #A71286;
@@ -427,7 +381,6 @@ footer {
   color: #fff;
   height: 20px;
 }
-
 footer p {
   font-size: 12px;
 }
@@ -444,17 +397,15 @@ footer p {
 .btn_positive {
   background-color: #A71286;
 }
-
 .btn_positive:hover {
   background-color: #ac649c;
 }
 
 .btn_negative {
-  background-color: #b9b9b9;
+  background-color: rgb(185, 185, 185);
 }
-
 .btn_negative:hover {
-  background-color: #575757;
+  background-color: rgb(87, 87, 87);
 }
 
 .follow_btn {
@@ -470,7 +421,7 @@ footer p {
 }
 
 .follow_cancel {
-  background-color: #b9b9b9;
+  background-color: rgb(185, 185, 185);
 }
 
 /* モーダル本体 */
@@ -503,16 +454,10 @@ footer p {
 }
 
 .imglist {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-
 .imglist img {
   padding: 10px;
   width: 330px;
@@ -534,12 +479,10 @@ footer p {
   width: 90%;
   margin: 0 auto;
 }
-
 .about__siteTitle1 {
   font-size: 24px;
   color: #A71286;
 }
-
 .about__siteTitle2 {
   font-size: 24px;
 }
@@ -552,7 +495,6 @@ footer p {
   width: 270px;
   /* 選択時 */
 }
-
 .contact_form:focus {
   border: 2px solid #A71286;
   outline: 0;
@@ -567,7 +509,6 @@ footer p {
   margin-top: 6px;
   /* 選択時 */
 }
-
 .contact_form_textarea:focus {
   border: 2px solid #A71286;
   outline: 0;
@@ -592,7 +533,6 @@ footer p {
   padding: 4px 12px;
   /* 選択時 */
 }
-
 .profile_input:focus {
   border: 2px solid #A71286;
   outline: 0;
@@ -606,41 +546,28 @@ footer p {
   border-radius: 2px;
   /* 選択時 */
 }
-
 .profile_textarea:focus {
   border: 2px solid #A71286;
   outline: 0;
 }
 
 .profile__follow_followers {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
 }
-
 .profile__follow_followers__btn {
   margin: 6px 16px;
   cursor: pointer;
 }
-
 .profile__name {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 .profile__name p {
   font-size: 24px;
   font-weight: bold;
   margin-top: 5px;
 }
-
 .profile__name img {
   width: 20px;
   cursor: pointer;
@@ -656,34 +583,26 @@ footer p {
 .my_modal__title {
   margin: 0 auto;
   margin-bottom: 12px;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
 }
-
 .my_modal__title p {
   font-size: 26px;
   padding: 4px 24px;
 }
-
 .my_modal__title__follow {
-  border-bottom: 2px solid #afafaf;
+  border-bottom: 2px solid rgb(175, 175, 175);
 }
-
 .my_modal__title__follower {
-  border-bottom: 2px solid #afafaf;
+  border-bottom: 2px solid rgb(175, 175, 175);
 }
-
 .my_modal__artists {
   text-align: left;
   font-size: 20px;
   margin-left: 40px;
 }
-
 .my_modal__artists tr {
   height: 50px;
 }
-
 .my_modal__img {
   text-align: left;
   width: 40px;
@@ -693,7 +612,6 @@ footer p {
   -o-object-fit: cover;
      object-fit: cover;
 }
-
 .my_modal__text {
   margin-left: 20px;
 }
@@ -701,23 +619,20 @@ footer p {
 .register {
   border: solid;
 }
-
 .register__form {
   display: block;
 }
-
 .register__Title {
   font-size: 24px;
   color: #A71286;
 }
-
 .register__input {
   font-size: 16px;
   width: 100%;
 }
 
 .explain {
-  color: #6d6d6d;
+  color: rgb(109, 109, 109);
   margin-top: 10px;
 }
 
@@ -739,9 +654,7 @@ footer p {
   width: 270px;
   /* 選択時 */
 }
-
 .art_register_input:focus {
   border: 2px solid #A71286;
   outline: 0;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
